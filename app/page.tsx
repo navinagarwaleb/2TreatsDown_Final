@@ -3,6 +3,8 @@ import FeaturedItems from "@/components/home/FeaturedItems";
 import Testimonials from "@/components/home/Testimonials";
 import { getSquareProducts } from "@/lib/square";
 
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
     const products = await getSquareProducts();
     const featuredListings = products.slice(0, 3);
