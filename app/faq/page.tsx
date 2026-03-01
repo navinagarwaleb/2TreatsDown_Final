@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Mail } from "lucide-react";
 
 const FAQItem = ({ q, a }: { q: string; a: string }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +44,7 @@ const FAQItem = ({ q, a }: { q: string; a: string }) => {
 export default function FAQ() {
     const faqs = [
         {
-            category: "🐾 Products & Ingredients",
+            category: "Products & Ingredients",
             questions: [
                 {
                     q: "Are your treats safe for dogs?",
@@ -73,7 +73,7 @@ export default function FAQ() {
             ]
         },
         {
-            category: "🧁 Pupcakes & Cakes",
+            category: "Pupcakes & Cakes",
             questions: [
                 {
                     q: "How long do pupcakes and cakes last?",
@@ -110,7 +110,7 @@ export default function FAQ() {
             ]
         },
         {
-            category: "🛒 Ordering & Pick-Up",
+            category: "Ordering & Pick-Up",
             questions: [
                 {
                     q: "How do I place an order?",
@@ -139,7 +139,7 @@ export default function FAQ() {
             ]
         },
         {
-            category: "🧊 Storage & Feeding",
+            category: "Storage & Feeding",
             questions: [
                 {
                     q: "How should I store treats?",
@@ -152,7 +152,7 @@ export default function FAQ() {
             ]
         },
         {
-            category: "🐕 Allergies & Dietary Needs",
+            category: "Allergies & Dietary Needs",
             questions: [
                 {
                     q: "Do you accommodate allergies?",
@@ -165,7 +165,7 @@ export default function FAQ() {
             ]
         },
         {
-            category: "🐾 Markets & Community",
+            category: "Markets & Community",
             questions: [
                 {
                     q: "Where can I find you in person?",
@@ -216,9 +216,9 @@ export default function FAQ() {
                 viewport={{ once: true }}
                 className="mt-16 text-center"
             >
-                <h3 className="text-2xl font-bold font-heading text-brand-dark mb-4">
-                    📩 Still Have Questions?
-                </h3>
+                <h2 className="text-3xl font-heading font-bold text-brand-dark mb-4 flex items-center justify-center gap-3">
+                    <Mail className="w-8 h-8 text-brand-orange" /> Still Have Questions?
+                </h2>
                 <p className="text-brand-dark/70 mb-6">
                     Didn’t see your question here? Feel free to reach out — we’re always happy to help!
                 </p>

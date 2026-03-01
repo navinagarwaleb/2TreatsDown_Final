@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag, PawPrint } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/useCartStore";
 
@@ -29,7 +29,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="text-2xl pt-1 font-bold text-brand-dark transition-colors group-hover:text-brand-orange">
-            2TreatsDown <span className="text-xl">🐾</span>
+            2TreatsDown <PawPrint className="w-6 h-6 ml-1 text-brand-orange inline-block" />
           </span>
         </Link>
 

@@ -43,7 +43,7 @@ export default function RootLayout({
                 `}} />
             </head>
             <body
-                className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col bg-brand-main text-brand-dark antialiased transition-colors`}
+                className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col bg-brand-main text-brand-dark antialiased transition-colors overflow-x-hidden`}
             >
                 <Navbar />
                 <CartDrawer />

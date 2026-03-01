@@ -2,7 +2,7 @@ import { getSquareProduct } from "@/lib/square";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/shop/AddToCartButton";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, PawPrint } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -46,7 +46,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
                     <div className="prose prose-lg text-brand-dark/80 bg-white p-8 rounded-3xl shadow-sm border border-brand-pink/50">
                         <h3 className="text-xl font-bold text-brand-dark mb-4 flex items-center gap-2">
-                            <span className="text-brand-orange">🐾</span> Product Details
+                            <PawPrint className="w-6 h-6 text-brand-orange" /> Product Details
                         </h3>
 
                         {product.descriptionHtml ? (
