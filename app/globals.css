@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  /* Exact Inspiration Palette */
+  --color-brand-main: #fdf6f2;
+  /* Body Background */
+  --color-brand-brown: #322120;
+  /* Footer/Espresso */
+  --color-brand-dark: #010101;
+  /* Title Text */
+  --color-brand-orange: #bd6230;
+  /* Chocolate Dim / CTA */
+  --color-brand-pink: #fbede5;
+  /* Secondary Pink Background */
+  --color-brand-accent: #d29878;
+  /* Soft Terracotta */
+}
+
+@layer base {
+  :root {
+    background-color: var(--color-brand-main);
+    color: var(--color-brand-dark);
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
