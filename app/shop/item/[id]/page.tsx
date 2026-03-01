@@ -4,6 +4,8 @@ import AddToCartButton from "@/components/shop/AddToCartButton";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
     const resolvedParams = await params;
     const product = await getSquareProduct(resolvedParams.id);

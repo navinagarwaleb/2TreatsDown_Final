@@ -5,21 +5,21 @@ import { motion } from "framer-motion";
 
 const pupcakes = [
     {
-        id: 1,
+        id: "1",
         title: "Peanut Butter & Carrot",
         price: "$32.00 / 4-pack",
         description: "Classic pupcakes with our signature cream cheese frosting.",
         imageUrl: "https://images.unsplash.com/photo-1541364983171-a8ba01e9d7ce?auto=format&fit=crop&q=80",
     },
     {
-        id: 2,
+        id: "2",
         title: "Sweet Potato Delight",
         price: "$34.00 / 4-pack",
         description: "Gentle on the tummy and naturally sweet. Frosting colors vary.",
         imageUrl: "https://images.unsplash.com/photo-1579737118552-44ce1db8d4cb?auto=format&fit=crop&q=80",
     },
     {
-        id: 3,
+        id: "3",
         title: "Mini PB Bites (12-pack)",
         price: "$28.00 / dozen",
         description: "Perfect bite-sized treats for small dogs or training rewards.",

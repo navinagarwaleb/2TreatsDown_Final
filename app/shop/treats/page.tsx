@@ -1,6 +1,8 @@
 import { getSquareProducts } from "@/lib/square";
 import ProductGrid from "@/components/shop/ProductGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function ShopTreats() {
     // Fetch live inventory from Square API
     const treats = await getSquareProducts();

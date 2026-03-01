@@ -6,21 +6,21 @@ import { motion } from "framer-motion";
 
 const featuredProducts = [
     {
-        id: 1,
+        id: "1",
         title: "Peanut Butter Pupcakes (4-Pack)",
         price: "$32.00",
         description: "Classic peanut butter and carrot cake with our signature cream cheese frosting. Safe and delicious.",
         imageUrl: "https://images.unsplash.com/photo-1579737118552-44ce1db8d4cb?auto=format&fit=crop&q=80",
     },
     {
-        id: 2,
+        id: "2",
         title: "Sweet Potato Chews",
         price: "$12.00",
         description: "Single ingredient, limited batch sweet potato chews. Great for sensitive tummies.",
         imageUrl: "https://images.unsplash.com/photo-1541364983171-a8ba01e9d7ce?auto=format&fit=crop&q=80",
     },
     {
-        id: 3,
+        id: "3",
         title: "Chicken Jerky Strips",
         price: "$18.00",
         description: "High-protein, 100% chicken breast dehydrated to perfection. No preservatives.",
