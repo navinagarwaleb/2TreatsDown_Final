@@ -17,10 +17,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     return (
         <div className="container mx-auto px-4 max-w-7xl py-12 md:py-24 animate-in fade-in duration-500">
             <Link
-                href="/shop/treats"
+                href="/shop"
                 className="inline-flex items-center gap-2 text-brand-dark/60 hover:text-brand-orange transition-colors mb-8 font-medium"
             >
-                <ArrowLeft className="w-4 h-4" /> Back to treats
+                <ArrowLeft className="w-4 h-4" /> Back to shop
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">

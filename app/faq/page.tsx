@@ -1,6 +1,45 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+const FAQItem = ({ q, a }: { q: string; a: string }) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="space-y-2">
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="w-full flex justify-between items-center text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange py-2"
+                aria-expanded={isOpen}
+            >
+                <h3 className="text-xl font-bold text-brand-dark pr-8">{q}</h3>
+                <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.2 }}
+                >
+                    <ChevronDown className="h-6 w-6 text-brand-orange flex-shrink-0" />
+                </motion.div>
+            </button>
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="text-brand-dark/80 whitespace-pre-wrap leading-relaxed pb-4 pt-2">
+                            {a}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+};
 
 export default function FAQ() {
     const faqs = [
@@ -164,12 +203,7 @@ export default function FAQ() {
                         </h2>
                         <div className="space-y-8">
                             {section.questions.map((faq, qidx) => (
-                                <div key={qidx} className="space-y-2">
-                                    <h3 className="text-xl font-bold text-brand-dark">Q: {faq.q}</h3>
-                                    <div className="text-brand-dark/80 whitespace-pre-wrap leading-relaxed">
-                                        {faq.a}
-                                    </div>
-                                </div>
+                                <FAQItem key={qidx} q={faq.q} a={faq.a} />
                             ))}
                         </div>
                     </motion.div>

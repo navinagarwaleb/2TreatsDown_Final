@@ -3,32 +3,9 @@
 import ProductCard from "@/components/shop/ProductCard";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { SquareProduct } from "@/lib/square";
 
-const featuredProducts = [
-    {
-        id: "1",
-        title: "Peanut Butter Pupcakes (4-Pack)",
-        price: "$32.00",
-        description: "Classic peanut butter and carrot cake with our signature cream cheese frosting. Safe and delicious.",
-        imageUrl: "https://images.unsplash.com/photo-1579737118552-44ce1db8d4cb?auto=format&fit=crop&q=80",
-    },
-    {
-        id: "2",
-        title: "Sweet Potato Chews",
-        price: "$12.00",
-        description: "Single ingredient, limited batch sweet potato chews. Great for sensitive tummies.",
-        imageUrl: "https://images.unsplash.com/photo-1541364983171-a8ba01e9d7ce?auto=format&fit=crop&q=80",
-    },
-    {
-        id: "3",
-        title: "Chicken Jerky Strips",
-        price: "$18.00",
-        description: "High-protein, 100% chicken breast dehydrated to perfection. No preservatives.",
-        imageUrl: "https://images.unsplash.com/photo-1623356075306-38fed53e1a0b?auto=format&fit=crop&q=80",
-    },
-];
-
-export default function FeaturedItems() {
+export default function FeaturedItems({ products }: { products: SquareProduct[] }) {
     return (
         <section className="bg-white py-24">
             <div className="container max-w-7xl mx-auto px-4">
@@ -49,7 +26,7 @@ export default function FeaturedItems() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {featuredProducts.map((product, idx) => (
+                    {products.map((product, idx) => (
                         <motion.div
                             key={product.id}
                             initial={{ opacity: 0, y: 30 }}
@@ -69,7 +46,7 @@ export default function FeaturedItems() {
                     className="mt-16 text-center"
                 >
                     <Link
-                        href="/shop/treats"
+                        href="/shop"
                         className="inline-block text-brand-orange hover:text-brand-brown font-bold text-lg border-b-2 border-brand-orange hover:border-brand-brown transition-colors pb-1"
                     >
                         View All Treats &rarr;

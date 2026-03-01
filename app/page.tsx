@@ -1,13 +1,16 @@
 import Hero from "@/components/home/Hero";
 import FeaturedItems from "@/components/home/FeaturedItems";
 import Testimonials from "@/components/home/Testimonials";
+import { getSquareProducts } from "@/lib/square";
 
-export default function Home() {
+export default async function Home() {
+    const products = await getSquareProducts();
+    const featuredListings = products.slice(0, 3);
     return (
         <div className="flex flex-col min-h-screen">
             <main className="flex-grow">
                 <Hero />
-                <FeaturedItems />
+                <FeaturedItems products={featuredListings} />
 
                 {/* Banner Section */}
                 <section className="bg-brand-orange py-16 text-white overflow-hidden text-center relative">
