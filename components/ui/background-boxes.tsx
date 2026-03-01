@@ -5,8 +5,8 @@ import { cn } from "@/lib/utils";
 import { Plus } from "lucide-react";
 
 export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
-    const rows = new Array(150).fill(1);
-    const cols = new Array(100).fill(1);
+    const rows = new Array(30).fill(1);
+    const cols = new Array(45).fill(1);
 
     const colors = [
         "#eacbc0", // darker brand-pink 
@@ -41,9 +41,6 @@ export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
                             whileHover={{
                                 backgroundColor: getRandomColor(),
                                 transition: { duration: 0 },
-                            }}
-                            animate={{
-                                transition: { duration: 2 },
                             }}
                             key={`col` + j}
                             className="w-16 h-8 border-r border-t border-[#e4cebf] relative flex items-center justify-center"

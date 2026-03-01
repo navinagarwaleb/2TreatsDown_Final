@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Boxes } from "@/components/ui/background-boxes";
+import { PawPrint, Cake } from "lucide-react";
 
 export default function Hero() {
     return (
@@ -19,8 +20,8 @@ export default function Hero() {
                         transition={{ duration: 0.6 }}
                         className="flex flex-col space-y-6 text-center lg:text-left pointer-events-auto"
                     >
-                        <h1 className="font-heading text-5xl md:text-6xl font-bold text-brand-dark leading-tight">
-                            Celebrate Your Pup with <span className="text-brand-orange">Handmade</span> Treats 🐾
+                        <h1 className="font-heading text-5xl md:text-6xl font-bold text-brand-dark leading-tight flex flex-wrap items-center justify-center lg:justify-start gap-x-2">
+                            Celebrate Your Pup with <span className="text-brand-orange">Handmade</span> Treats <PawPrint className="w-10 h-10 text-brand-orange inline-block" />
                         </h1>
                         <p className="text-lg md:text-xl text-brand-dark/80 max-w-lg mx-auto lg:mx-0">
                             Gourmet, healthy, and preservative-free dog treats and fully personalized custom dog birthday cakes made with love in Kanata.
@@ -58,7 +59,7 @@ export default function Hero() {
                             </div>
                             {/* Floating Badge */}
                             <div className="absolute -bottom-6 -right-6 lg:-right-10 bg-white px-6 py-4 rounded-full shadow-xl flex items-center gap-3 border border-brand-pink animate-bounce z-10 w-max max-w-[90vw]">
-                                <span className="text-2xl">🎂</span>
+                                <Cake className="w-8 h-8 text-brand-orange" />
                                 <span className="font-bold text-brand-brown whitespace-nowrap">100% Custom</span>
                             </div>
                         </div>
