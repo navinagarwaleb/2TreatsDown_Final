@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 
 const images = [
-    "https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1522276498395-f4f68f7f8454?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1625316708582-7c38734be31d?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1590200889981-2c0c7bfa165a?auto=format&fit=crop&q=80",
-    "https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&q=80"
+    "/images/cakes/0m6z6d2hcnrmr0cwnkntwe854c.webp",
+    "/images/cakes/ebjvrebdhdrmy0cwnket7he11m.webp",
+    "/images/cakes/jrk78gqz7nrmt0cwnkeaw6zh2r.webp",
+    "/images/cakes/replicate-prediction-nn85mrpa6xrmy0cwnkcaetc448.webp",
+    "/images/cakes/replicate-prediction-qre09x6y4nrmr0cwnkbvxp9qr0.webp",
+    "/images/cakes/replicate-prediction-xm9jc4jh81rmw0cwnkcspexg60.webp",
+    "/images/cakes/replicate-prediction-xy1mce5hb1rmr0cwnkasmtx0ng.webp",
+    "/images/cakes/t8qfd60stdrmw0cwnkd87pp0gr.webp"
 ];
 
 export default function Gallery() {
@@ -22,8 +22,8 @@ export default function Gallery() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4">Happy Pups Gallery</h2>
-                    <p className="text-lg text-brand-dark/70 max-w-2xl mx-auto">Take a look at all the joy our handmade treats bring to our amazing furry friends.</p>
+                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4">Cakes Gallery</h2>
+                    <p className="text-lg text-brand-dark/70 max-w-2xl mx-auto">Take a look at all the joy our handmade cakes bring to our amazing customers.</p>
                 </motion.div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">

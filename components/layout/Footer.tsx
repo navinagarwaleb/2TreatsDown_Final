@@ -26,6 +26,9 @@ export default function Footer() {
                     <Link href="/shop" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                         Shop
                     </Link>
+                    <Link href="/reviews" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                        Reviews
+                    </Link>
                     <Link href="/about-us" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
                         About Us
                     </Link>

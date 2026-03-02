@@ -10,6 +10,7 @@ import { useCartStore } from "@/store/useCartStore";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Shop", href: "/shop" },
+  { name: "Reviews", href: "/reviews" },
   { name: "About Us", href: "/about-us" },
   { name: "FAQ", href: "/faq" },
 ];
