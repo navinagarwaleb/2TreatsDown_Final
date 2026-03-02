@@ -6,6 +6,7 @@ export interface SquareProduct {
     description: string;
     descriptionHtml: string;
     imageUrl: string;
+    imageUrls: string[];
 }
 
 export async function getSquareProducts(): Promise<SquareProduct[]> {
@@ -16,22 +17,83 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
     }
 
     try {
-        const response = await fetch("https://connect.squareup.com/v2/catalog/list?types=ITEM,IMAGE", {
+        // Step 1: Fetch categories to find the "Website" category ID
+        const catResponse = await fetch("https://connect.squareup.com/v2/catalog/list?types=CATEGORY", {
             headers: {
                 "Square-Version": "2024-02-22",
                 "Authorization": `Bearer ${token}`,
                 "Content-Type": "application/json"
             },
-            cache: 'no-store' // Fetch fresh data on every request
+            cache: 'no-store'
         });
 
-        if (!response.ok) {
-            console.error("Failed to fetch square products", await response.text());
+        if (!catResponse.ok) {
+            console.error("Failed to fetch square categories", await catResponse.text());
             return [];
         }
 
-        const json = await response.json();
-        const objects = json.objects || [];
+        const catJson: any = await catResponse.json();
+        const categories = catJson.objects || [];
+        const websiteCategory = categories.find((obj: any) => obj.category_data?.name?.toLowerCase() === "website");
+        const websiteCategoryId = websiteCategory?.id;
+
+        let objects: any[] = [];
+
+        // Step 2: Fetch items (Using highly-efficient Search API if Website category exists)
+        if (websiteCategoryId) {
+            const searchResponse = await fetch("https://connect.squareup.com/v2/catalog/search", {
+                method: "POST",
+                headers: {
+                    "Square-Version": "2024-02-22",
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    object_types: ["ITEM"],
+                    include_related_objects: true,
+                    query: {
+                        exact_query: {
+                            attribute_name: "category_id",
+                            attribute_value: websiteCategoryId
+                        }
+                    }
+                }),
+                cache: 'no-store'
+            });
+
+            if (!searchResponse.ok) {
+                console.error("Failed to fetch square items via search", await searchResponse.text());
+                return [];
+            }
+            const searchJson: any = await searchResponse.json();
+
+            // Search API separates items and images into 'objects' and 'related_objects'
+            if (searchJson.objects) objects = objects.concat(searchJson.objects);
+            if (searchJson.related_objects) objects = objects.concat(searchJson.related_objects);
+        } else {
+            // Fallback: If no Website category was found, download the entire catalog with pagination manually
+            let cursor: string | undefined = undefined;
+            do {
+                const fetchUrl: string = cursor
+                    ? `https://connect.squareup.com/v2/catalog/list?types=ITEM,IMAGE&cursor=${encodeURIComponent(cursor)}`
+                    : "https://connect.squareup.com/v2/catalog/list?types=ITEM,IMAGE";
+
+                const reqResponse = await fetch(fetchUrl, {
+                    headers: {
+                        "Square-Version": "2024-02-22",
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    },
+                    cache: 'no-store'
+                });
+
+                if (!reqResponse.ok) break;
+
+                const reqJson: any = await reqResponse.json();
+                if (reqJson.objects) objects = objects.concat(reqJson.objects);
+                cursor = reqJson.cursor;
+            } while (cursor);
+        }
 
         // Map all images by ID for quick lookup
         const images: Record<string, string> = {};
@@ -46,6 +108,21 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
         // Map products and match with images
         const items: SquareProduct[] = objects
             .filter((obj: any) => obj.type === "ITEM")
+            .filter((item: any) => {
+                const data = item.item_data;
+
+                // Strip out deleted or archived items immediately
+                if (item.is_deleted || data.is_archived) return false;
+
+                // Do not show items explicitly marked as unavailable online
+                if (data.ecom_visibility === "UNAVAILABLE" || data.ecom_visibility === "HIDDEN") return false;
+
+                // If fetched via strict Search API, they are in the folder, so just confirm they are alive and visible
+                if (websiteCategoryId) return true;
+
+                // Fallback: If no folder, blindly trust Ecom visibility "VISIBLE"
+                return data.ecom_visibility === "VISIBLE";
+            })
             .map((item: any) => {
                 const data = item.item_data;
 
@@ -60,12 +137,19 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     }
                 }
 
-                // Extract Image (Use fallback if square image missing)
+                // Extract Images (Use fallback if square image missing)
                 let imageUrl = "https://images.unsplash.com/photo-1541364983171-a8ba01e9d7ce?auto=format&fit=crop&q=80";
+                let imageUrls: string[] = [];
+
                 if (data.image_ids && data.image_ids.length > 0) {
                     if (images[data.image_ids[0]]) {
                         imageUrl = images[data.image_ids[0]];
                     }
+                    imageUrls = data.image_ids.map((id: string) => images[id]).filter(Boolean);
+                }
+
+                if (imageUrls.length === 0) {
+                    imageUrls = [imageUrl];
                 }
 
                 // Extract Description HTML or Plain Text
@@ -79,42 +163,12 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     descriptionHtml: descriptionHtml,
                     price: priceString,
                     priceCents,
-                    imageUrl
+                    imageUrl,
+                    imageUrls
                 };
             });
 
-        // Add fallback hardcoded products so that links for 1, 2, 3 don't throw 404 errors during migration
-        const mockProducts: SquareProduct[] = [
-            {
-                id: "1",
-                title: "Peanut Butter & Carrot Pupcake",
-                price: "$32.00",
-                priceCents: 3200,
-                description: "Classic pupcakes with our signature cream cheese frosting. Set of 4.",
-                descriptionHtml: "<p>Classic pupcakes with our signature cream cheese frosting. Set of 4.</p>",
-                imageUrl: "https://images.unsplash.com/photo-1541364983171-a8ba01e9d7ce?auto=format&fit=crop&q=80",
-            },
-            {
-                id: "2",
-                title: "Sweet Potato Chews",
-                price: "$12.00",
-                priceCents: 1200,
-                description: "Single ingredient, limited batch sweet potato chews. Great for sensitive tummies.",
-                descriptionHtml: "<p>Single ingredient, limited batch sweet potato chews. Great for sensitive tummies.</p>",
-                imageUrl: "https://images.unsplash.com/photo-1579737118552-44ce1db8d4cb?auto=format&fit=crop&q=80",
-            },
-            {
-                id: "3",
-                title: "Chicken Jerky Strips",
-                price: "$18.00",
-                priceCents: 1800,
-                description: "High-protein, 100% chicken breast dehydrated to perfection. No preservatives.",
-                descriptionHtml: "<p>High-protein, 100% chicken breast dehydrated to perfection. No preservatives.</p>",
-                imageUrl: "https://images.unsplash.com/photo-1623356075306-38fed53e1a0b?auto=format&fit=crop&q=80",
-            }
-        ];
-
-        return [...items, ...mockProducts];
+        return items;
     } catch (error) {
         console.error("Error fetching from Square API:", error);
         return [];

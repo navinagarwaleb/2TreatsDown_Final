@@ -17,7 +17,7 @@ export default function CustomCakeForm() {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="bg-brand-orange text-white p-8 rounded-[2rem] text-center shadow-lg"
+                className="bg-brand-orange text-brand-dark p-8 rounded-[2rem] text-center shadow-lg"
             >
                 <span className="text-6xl mb-4 block">🐾🎉</span>
                 <h3 className="text-3xl font-heading font-bold mb-4">Request Sent!</h3>
@@ -65,7 +65,7 @@ export default function CustomCakeForm() {
                 <input type="text" id="allergies" className="p-3 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-orange transition-colors" placeholder="No peanut butter, grain-free preferred" />
             </div>
 
-            <button type="submit" className="w-full bg-brand-orange hover:bg-brand-brown text-white font-bold text-lg p-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md">
+            <button type="submit" className="w-full bg-brand-orange hover:bg-brand-brown text-brand-dark hover:text-white font-bold text-lg p-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-md">
                 <Send className="w-5 h-5" /> Request Quote
             </button>
             <p className="text-center text-sm text-brand-dark/50 mt-4">* Pickup only in Kanata, ON.</p>

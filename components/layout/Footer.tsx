@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook, Mail } from "lucide-react";
+import { Instagram, Facebook, Mail, PawPrint } from "lucide-react";
 
 export default function Footer() {
     return (
@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="flex flex-col space-y-4 col-span-1 md:col-span-1">
                     <Link href="/" className="flex items-center gap-2 group">
                         <span className="text-2xl font-bold transition-colors">
-                            2TreatsDown <span className="text-xl">🐾</span>
+                            2TreatsDown <PawPrint className="w-5 h-5 ml-1 inline-block" />
                         </span>
                     </Link>
                     <p className="text-sm opacity-90 leading-relaxed text-brand-main/80 mt-2">
@@ -19,15 +19,21 @@ export default function Footer() {
 
                 {/* Links */}
                 <div className="flex flex-col space-y-4">
-                    <h4 className="text-lg font-bold">Shop</h4>
-                    <Link href="/shop/pupcakes" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                        Pupcakes
+                    <h4 className="text-lg font-bold">Links</h4>
+                    <Link href="/" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                        Home
                     </Link>
-                    <Link href="/shop/treats" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                        Natural Treats
+                    <Link href="/shop" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                        Shop
+                    </Link>
+                    <Link href="/about-us" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                        About Us
+                    </Link>
+                    <Link href="/faq" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
+                        FAQ
                     </Link>
                     <Link href="/custom-cake" className="text-sm opacity-80 hover:opacity-100 transition-opacity">
-                        Custom Cakes
+                        Custom Cake
                     </Link>
                 </div>
 
@@ -50,10 +56,10 @@ export default function Footer() {
                 <div className="flex flex-col space-y-4">
                     <h4 className="text-lg font-bold">Follow Us</h4>
                     <div className="flex gap-4">
-                        <a href="#" className="h-10 w-10 flex items-center justify-center rounded-full bg-brand-main/10 hover:bg-brand-orange transition-colors" aria-label="Instagram">
+                        <a href="https://www.instagram.com/2treatsdown/" target="_blank" rel="noopener noreferrer" className="h-10 w-10 flex items-center justify-center rounded-full bg-brand-main/10 hover:bg-brand-orange transition-colors" aria-label="Instagram">
                             <Instagram className="h-5 w-5" />
                         </a>
-                        <a href="#" className="h-10 w-10 flex items-center justify-center rounded-full bg-brand-main/10 hover:bg-brand-orange transition-colors" aria-label="Facebook">
+                        <a href="https://www.facebook.com/people/2-Treats-Down/100083028921987/?sk=about" target="_blank" rel="noopener noreferrer" className="h-10 w-10 flex items-center justify-center rounded-full bg-brand-main/10 hover:bg-brand-orange transition-colors" aria-label="Facebook">
                             <Facebook className="h-5 w-5" />
                         </a>
                     </div>

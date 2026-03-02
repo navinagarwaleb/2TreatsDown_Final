@@ -224,7 +224,7 @@ export default function FAQ() {
                 </p>
                 <a
                     href="mailto:contact@2treatsdown.com"
-                    className="inline-block bg-brand-orange hover:bg-brand-brown transition-colors text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
+                    className="inline-block bg-brand-orange hover:bg-brand-brown transition-colors text-brand-dark hover:text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
                 >
                     Contact Us
                 </a>

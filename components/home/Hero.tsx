@@ -29,15 +29,15 @@ export default function Hero() {
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
                             <Link
                                 href="/custom-cake"
-                                className="bg-brand-orange hover:bg-brand-brown transition-colors text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
+                                className="bg-brand-orange hover:bg-brand-brown transition-colors text-brand-dark hover:text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
                             >
                                 Order Custom Cake
                             </Link>
                             <Link
-                                href="/shop/pupcakes"
-                                className="bg-white border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-white transition-colors px-8 py-4 rounded-full font-bold text-lg shadow-sm"
+                                href="/shop"
+                                className="bg-white border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-brand-dark transition-colors px-8 py-4 rounded-full font-bold text-lg shadow-sm"
                             >
-                                Shop Pupcakes
+                                Shop
                             </Link>
                         </div>
                     </motion.div>

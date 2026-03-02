@@ -1,6 +1,7 @@
 import { getSquareProduct } from "@/lib/square";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/shop/AddToCartButton";
+import ProductGallery from "@/components/shop/ProductGallery";
 import Link from "next/link";
 import { ArrowLeft, PawPrint } from "lucide-react";
 
@@ -24,14 +25,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             </Link>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-start">
-                {/* Product Image */}
-                <div className="relative w-full aspect-square rounded-[3rem] overflow-hidden bg-brand-pink border border-brand-pink shadow-lg">
-                    <img
-                        src={product.imageUrl}
-                        alt={product.title}
-                        className="w-full h-full object-cover"
-                    />
-                </div>
+                <ProductGallery images={product.imageUrls} title={product.title} />
 
                 {/* Product Info */}
                 <div className="flex flex-col space-y-8">

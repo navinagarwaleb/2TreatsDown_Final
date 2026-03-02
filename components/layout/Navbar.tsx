@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-4">
             <Link
               href="/custom-cake"
-              className="bg-brand-orange hover:bg-brand-brown text-white transition-colors duration-300 px-5 py-2.5 rounded-full text-sm font-semibold shadow-sm"
+              className="bg-brand-orange hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 px-5 py-2.5 rounded-full text-sm font-semibold shadow-sm"
             >
               Request Custom Cake
             </Link>
@@ -64,7 +64,7 @@ export default function Navbar() {
           >
             <ShoppingBag className="h-6 w-6" />
             {mounted && items.length > 0 && (
-              <span className="absolute top-0 right-0 bg-brand-orange text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute top-0 right-0 bg-brand-orange text-brand-dark text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {items.reduce((total, item) => total + item.quantity, 0)}
               </span>
             )}
@@ -106,7 +106,7 @@ export default function Navbar() {
                 <Link
                   href="/custom-cake"
                   onClick={() => setIsOpen(false)}
-                  className="w-full inline-block text-center bg-brand-orange hover:bg-brand-brown text-white transition-colors duration-300 px-5 py-3 rounded-full text-base font-semibold"
+                  className="w-full inline-block text-center bg-brand-orange hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 px-5 py-3 rounded-full text-base font-semibold"
                 >
                   Request Custom Cake
                 </Link>

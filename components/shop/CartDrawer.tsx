@@ -116,7 +116,7 @@ export default function CartDrawer() {
                                     <span className="font-medium text-brand-dark/80">Subtotal</span>
                                     <span className="font-bold font-heading text-brand-dark">${total}</span>
                                 </div>
-                                <button className="w-full bg-brand-orange hover:bg-brand-brown text-white transition-colors duration-300 py-4 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2 group">
+                                <button className="w-full bg-brand-orange hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 py-4 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2 group">
                                     Checkout <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                                 </button>
                                 <p className="text-center text-xs text-brand-dark/50 mt-4 px-4">
