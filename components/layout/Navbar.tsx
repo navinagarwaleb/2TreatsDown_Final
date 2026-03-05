@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Menu, X, ShoppingBag, PawPrint } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/useCartStore";
 
@@ -27,11 +28,18 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 w-full bg-brand-main/80 backdrop-blur-md border-b justify-center flex border-brand-pink">
-      <div className="container mx-auto px-4 h-20 flex items-center justify-between max-w-7xl">
+      <div className="container mx-auto px-4 h-24 flex items-center justify-between max-w-7xl">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="text-2xl pt-1 font-bold text-brand-dark transition-colors group-hover:text-brand-orange">
-            2TreatsDown <PawPrint className="w-6 h-6 ml-1 text-brand-orange inline-block" />
-          </span>
+          <div className="relative w-[240px] h-[70px] transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/logo.png"
+              alt="2TreatsDown Logo"
+              fill
+              sizes="240px"
+              className="object-contain object-left"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
@@ -89,7 +97,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="md:hidden absolute top-20 left-0 w-full bg-brand-main border-b border-brand-pink shadow-lg"
+            className="md:hidden absolute top-24 left-0 w-full bg-brand-main border-b border-brand-pink shadow-lg"
           >
             <div className="flex flex-col px-4 py-6 space-y-4">
               {navLinks.map((link) => (

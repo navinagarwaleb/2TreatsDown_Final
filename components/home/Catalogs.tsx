@@ -6,32 +6,32 @@ const catalogs = [
     {
         title: "2025 Catalog (Cakes)",
         url: "https://www.canva.com/design/DAG6wEb1bMk/Zv3G4DUKVPZGIBWhgSjeWg/edit?utm_content=DAG6wEb1bMk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2025_Cakes.jpg"
     },
     {
         title: "2024 Catalog (Cakes)",
         url: "https://www.canva.com/design/DAG_ndBx-uI/TnWpOzgda36Hl-2GvReFaQ/edit?utm_content=DAG_ndBx-uI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2024_Cakes.jpg"
     },
     {
         title: "2023 Catalog (Cakes)",
         url: "https://www.canva.com/design/DAG-28nHZ2g/2l-JjASiQFj3VNoRoU0gtg/view?utm_content=DAG-28nHZ2g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0e1b2074d1",
-        img: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2023_Cakes.jpg"
     },
     {
         title: "2025 Catalog (Pupcakes)",
         url: "https://www.canva.com/design/DAG9k33Nzek/kVIXQbSWpCpUxBwauMFkng/view?utm_content=DAG9k33Nzek&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5a1c91faca",
-        img: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2025_Pupcakes.jpg"
     },
     {
         title: "2024 Catalog (Pupcakes)",
         url: "https://www.canva.com/design/DAG_nQAxsjc/rzc4kgH7WhIjbOidR7xgJQ/edit?utm_content=DAG_nQAxsjc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2024_Pupcakes.jpg"
     },
     {
         title: "2023 Catalog (Pupcakes)",
         url: "https://www.canva.com/design/DAG-3dNxQ8A/nnr-ulZez2D4ZyClc8ORWA/edit?utm_content=DAG-3dNxQ8A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&q=80"
+        img: "/images/catalogs/2023_Pupcakes.jpg"
     },
 ];
 
