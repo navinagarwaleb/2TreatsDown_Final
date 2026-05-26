@@ -18,8 +18,7 @@ const galleryImages = [
     { src: "/images/gallery/ComfyUI_00036_.webp", alt: "Specialty decorated dog birthday cake" },
     { src: "/images/gallery/ComfyUI_00037_.webp", alt: "Premium dog treat selection" },
     { src: "/images/gallery/ComfyUI_00038_.webp", alt: "Beautiful custom iced cookies for dogs" },
-    { src: "/images/gallery/ComfyUI_00040_.webp", alt: "Artisan birthday cake for dogs" },
-    { src: "/images/gallery/ComfyUI_00041_.webp", alt: "Healthy ingredients and dog treats" }
+    { src: "/images/gallery/ComfyUI_00040_.webp", alt: "Artisan birthday cake for dogs" }
 ];
 
 export default function GalleryPage() {
