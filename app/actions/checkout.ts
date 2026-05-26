@@ -3,6 +3,51 @@
 import { headers } from "next/headers";
 import { CartItem } from "@/store/useCartStore";
 
+function convertToRFC3339(pickupDateTimeStr: string): string {
+    try {
+        // Expected format: "YYYY-MM-DD at HH:MM AM/PM" (e.g., "2026-05-28 at 2:30 PM")
+        const parts = pickupDateTimeStr.split(" at ");
+        if (parts.length !== 2) return new Date().toISOString();
+        
+        const datePart = parts[0]; // "2026-05-28"
+        const timePart = parts[1]; // "2:30 PM"
+        
+        const [time, modifier] = timePart.split(" ");
+        const [hoursStr, minutesStr] = time.split(":");
+        let hours = parseInt(hoursStr, 10);
+        const minutes = parseInt(minutesStr, 10);
+        
+        if (modifier === "PM" && hours < 12) {
+            hours += 12;
+        }
+        if (modifier === "AM" && hours === 12) {
+            hours = 0;
+        }
+        
+        const [year, month, day] = datePart.split("-").map(Number);
+        const dateObj = new Date(year, month - 1, day, hours, minutes);
+        
+        // Return RFC3339 string with local timezone offset
+        const tzo = -dateObj.getTimezoneOffset();
+        const dif = tzo >= 0 ? "+" : "-";
+        const pad = (num: number) => String(num).padStart(2, "0");
+        
+        return dateObj.getFullYear() +
+            "-" + pad(dateObj.getMonth() + 1) +
+            "-" + pad(dateObj.getDate()) +
+            "T" + pad(dateObj.getHours()) +
+            ":" + pad(dateObj.getMinutes()) +
+            ":" + pad(dateObj.getSeconds()) +
+            dif + pad(Math.floor(Math.abs(tzo) / 60)) +
+            ":" + pad(Math.abs(tzo) % 60);
+    } catch (err) {
+        console.error("Error formatting pickupDateTime to RFC3339:", err);
+        const fallbackDate = new Date();
+        fallbackDate.setDate(fallbackDate.getDate() + 3);
+        return fallbackDate.toISOString();
+    }
+}
+
 export async function createCheckoutSession(items: CartItem[], pickupDateTime: string) {
     const token = process.env.SQUARE_ACCESS_TOKEN;
     const locationId = process.env.SQUARE_LOCATION_ID;
@@ -34,6 +79,7 @@ export async function createCheckoutSession(items: CartItem[], pickupDateTime: s
             };
         });
 
+        const rfc3339PickupAt = convertToRFC3339(pickupDateTime);
         const idempotencyKey = crypto.randomUUID();
 
         const response = await fetch("https://connect.squareup.com/v2/online-checkout/payment-links", {
@@ -50,7 +96,18 @@ export async function createCheckoutSession(items: CartItem[], pickupDateTime: s
                     line_items: lineItems,
                     metadata: {
                         pickup_date_time: pickupDateTime
-                    }
+                    },
+                    fulfillments: [
+                        {
+                            type: "PICKUP",
+                            state: "PROPOSED",
+                            pickup_details: {
+                                schedule_type: "SCHEDULED",
+                                pickup_at: rfc3339PickupAt,
+                                note: `Pickup Coordinated: ${pickupDateTime}. Location: Kanata Bakery.`
+                            }
+                        }
+                    ]
                 },
                 checkout_options: {
                     redirect_url: redirectUrl,
