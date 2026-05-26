@@ -190,95 +190,82 @@ export default function Navbar() {
                             animate={{ y: 0 }}
                             exit={{ y: "-100%" }}
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed inset-0 z-[90] bg-surface flex flex-col justify-center px-6 md:px-12 lg:px-24 overflow-y-auto"
+                            className="fixed inset-0 z-[90] bg-surface overflow-y-auto"
                         >
-                            <div className="max-w-4xl mx-auto w-full flex flex-col justify-center items-center text-center py-12 md:py-16 min-h-[85vh] gap-10 md:gap-14">
+                            <div className="relative flex flex-col items-center justify-center h-full px-6 md:px-12 lg:px-20 xl:px-28">
                                 {/* Navigation Links Grid */}
-                                <nav className="flex flex-col space-y-4 md:space-y-5 items-center w-full">
-                                    {navLinks.map((link, index) => (
-                                        <motion.div
-                                            key={link.name}
-                                            initial={{ opacity: 0, y: -40 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            exit={{ opacity: 0, y: -40 }}
-                                            transition={{ 
-                                                duration: 1.1, 
-                                                ease: [0.16, 1, 0.3, 1], 
-                                                delay: 0.4 + index * 0.08 
-                                            }}
-                                            className="flex justify-center w-full"
-                                        >
-                                            <Link
-                                                href={link.href}
-                                                onClick={link.href === "/" ? handleHomeClick : undefined}
-                                                className={`group relative inline-block text-[clamp(1.8rem,4.5vw,3rem)] font-heading font-medium tracking-wide transition-colors duration-300 ${
-                                                    pathname === link.href ? "text-clay-rose" : "text-sumi/45 hover:text-clay-rose"
-                                                }`}
+                                <nav className="text-center">
+                                    <ul className="flex flex-col items-center">
+                                        {navLinks.map((link, index) => (
+                                            <motion.li
+                                                key={link.name}
+                                                initial={{ opacity: 0, y: 16 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: 0 }}
+                                                transition={{ 
+                                                    duration: 0.5, 
+                                                    ease: [0.16, 1, 0.3, 1], 
+                                                    delay: isOpen ? 0.5 + 0.06 * index : 0
+                                                }}
                                             >
-                                                <span className="relative inline-block overflow-hidden pb-[0.12em]">
-                                                    <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[110%]">
-                                                        {link.name}
+                                                <Link
+                                                    href={link.href}
+                                                    onClick={link.href === "/" ? handleHomeClick : undefined}
+                                                    className={`group relative inline-block font-heading text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.08] tracking-[0.005em] transition-colors duration-300 ${
+                                                        pathname === link.href ? "text-sumi" : "text-sumi/45 hover:text-sumi"
+                                                    }`}
+                                                >
+                                                    <span className="relative inline-block overflow-hidden pb-[0.12em]">
+                                                        <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[110%]">
+                                                            {link.name}
+                                                        </span>
+                                                        <span aria-hidden="true" className="absolute inset-0 translate-y-[110%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
+                                                            {link.name}
+                                                        </span>
                                                     </span>
-                                                    <span aria-hidden="true" className="absolute inset-0 translate-y-[110%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
-                                                        {link.name}
-                                                    </span>
-                                                </span>
-                                                {pathname === link.href && (
-                                                    <motion.span 
-                                                        layoutId="activeDot"
-                                                        className="absolute -right-6 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-clay-rose"
-                                                    />
-                                                )}
-                                            </Link>
-                                        </motion.div>
-                                    ))}
-                                </nav>
-
-                                {/* Additional Actions & Branding */}
-                                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-sumi/10 pt-8 mt-4 w-full text-center md:text-left">
+                                                    {pathname === link.href && (
+                                                        <motion.span 
+                                                            layoutId="activeDot"
+                                                            className="absolute -right-6 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-clay-rose"
+                                                        />
+                                                    )}
+                                                </Link>
+                                            </motion.li>
+                                        ))}
+                                    </ul>
+                                    {/* Thin divider */}
                                     <motion.div
-                                        initial={{ opacity: 0, y: -20 }}
+                                        aria-hidden="true"
+                                        initial={{ opacity: 0, y: 16 }}
                                         animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -20 }}
-                                        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
-                                        className="space-y-4 flex flex-col items-center md:items-start"
+                                        exit={{ opacity: 0, y: 0 }}
+                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
+                                        className="mt-4 mx-auto h-px w-10 bg-sumi/15"
+                                    />
+
+                                    {/* Social / CTA */}
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 16 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 0 }}
+                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
+                                        className="mt-7 flex items-center justify-center gap-7"
                                     >
-                                        <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/44 font-medium">
-                                            Custom Celebrations
-                                        </span>
                                         <Link
                                             href="/custom-cake"
-                                            className="group relative inline-flex items-center justify-center font-sans text-[12px] tracking-[0.16em] uppercase text-sumi border border-sumi/25 px-6 py-3 transition-[color,border-color] duration-500 ease-text-roll hover:text-washi hover:border-sumi"
+                                            className="group relative inline-flex items-center justify-center font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/45 hover:text-sumi transition-colors duration-300"
                                         >
-                                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-                                                <span className="absolute inset-y-0 -inset-x-px bg-sumi origin-bottom scale-y-0 transition-transform duration-500 ease-text-roll group-hover:scale-y-100" />
-                                            </span>
                                             <span className="relative inline-flex overflow-hidden">
                                                 <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[140%]">
-                                                    Request Custom Cake
+                                                    Order a Custom Cake
                                                 </span>
                                                 <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-[140%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
-                                                    Request Custom Cake
+                                                    Order a Custom Cake
                                                 </span>
                                             </span>
                                         </Link>
                                     </motion.div>
-
-                                    <motion.div
-                                        initial={{ opacity: 0, y: -20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: -20 }}
-                                        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.95 }}
-                                        className="text-center md:text-right"
-                                    >
-                                        <p className="font-heading italic text-lg text-sumi/60">
-                                            Quiet indulgence, deliberately crafted.
-                                        </p>
-                                        <span className="block font-sans text-[10px] tracking-[0.16em] uppercase text-sumi/45 mt-2">
-                                            Est. 2022 / Kanata, ON
-                                        </span>
-                                    </motion.div>
-                                </div>
+                                </nav>
                             </div>
                         </motion.div>
                     </>
