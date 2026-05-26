@@ -30,7 +30,7 @@ export default function Hero() {
             {/* Background Image (Single Image Hero with scroll-driven blur & scale) */}
             <div className="absolute inset-0 w-full h-full select-none pointer-events-none overflow-hidden">
                 <motion.img
-                    src="/images/hero-image.webp"
+                    src="/images/hero3.webp"
                     alt="Happy dog enjoying 2 Treats Down treats"
                     className="w-full h-full object-cover object-center"
                     style={{
