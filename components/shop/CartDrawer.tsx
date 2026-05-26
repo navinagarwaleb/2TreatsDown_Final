@@ -1,19 +1,40 @@
 "use client";
 
 import { useCartStore } from "@/store/useCartStore";
-import { X, Minus, Plus, ShoppingBag, ArrowRight } from "lucide-react";
+import { X, Minus, Plus, ShoppingBag, ArrowRight, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { createCheckoutSession } from "@/app/actions/checkout";
 
 export default function CartDrawer() {
     const { isOpen, closeCart, items, removeItem, updateQuantity, getCartTotalCents } = useCartStore();
     const [isMounted, setIsMounted] = useState(false);
+    const [checkoutLoading, setCheckoutLoading] = useState(false);
+    const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
     // Prevent hydration errors with zustand persist
     useEffect(() => {
         setIsMounted(true);
     }, []);
+
+    const handleCheckout = async () => {
+        if (items.length === 0) return;
+        setCheckoutLoading(true);
+        setCheckoutError(null);
+        try {
+            const result = await createCheckoutSession(items);
+            if (result.success && result.url) {
+                window.location.href = result.url;
+            } else {
+                setCheckoutError(result.error || "Failed to start checkout. Please try again.");
+            }
+        } catch (err) {
+            setCheckoutError("A network error occurred. Please try again.");
+        } finally {
+            setCheckoutLoading(false);
+        }
+    };
 
     if (!isMounted) return null;
 
@@ -116,8 +137,27 @@ export default function CartDrawer() {
                                     <span className="font-medium text-brand-dark/80">Subtotal</span>
                                     <span className="font-bold font-heading text-brand-dark">${total}</span>
                                 </div>
-                                <button className="w-full bg-brand-pink hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 py-4 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2 group">
-                                    Checkout <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+
+                                {checkoutError && (
+                                    <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-xs font-semibold">
+                                        ⚠️ {checkoutError}
+                                    </div>
+                                )}
+
+                                <button
+                                    onClick={handleCheckout}
+                                    disabled={checkoutLoading}
+                                    className="w-full bg-brand-pink hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 py-4 rounded-xl text-lg font-bold shadow-lg flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                                >
+                                    {checkoutLoading ? (
+                                        <>
+                                            <Loader2 className="w-5 h-5 animate-spin" /> Preparing Checkout...
+                                        </>
+                                    ) : (
+                                        <>
+                                            Checkout <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                        </>
+                                    )}
                                 </button>
                                 <p className="text-center text-xs text-brand-dark/50 mt-4 px-4">
                                     Taxes & shipping calculated at checkout. Local pickup at our Kanata location available.
