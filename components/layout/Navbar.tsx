@@ -192,9 +192,10 @@ export default function Navbar() {
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                             className="fixed inset-0 z-[90] bg-surface overflow-y-auto"
                         >
-                            <div className="relative flex flex-col items-center justify-center h-full px-6 md:px-12 lg:px-20 xl:px-28">
-                                {/* Navigation Links Grid */}
-                                <nav className="text-center">
+                            <div className="relative flex flex-col h-full px-6 md:px-12 lg:px-20 xl:px-28 pt-28 pb-10">
+
+                                {/* Nav links — centered in remaining space */}
+                                <nav className="flex-1 flex items-center justify-center text-center">
                                     <ul className="flex flex-col items-center">
                                         {navLinks.map((link, index) => (
                                             <motion.li
@@ -233,24 +234,17 @@ export default function Navbar() {
                                             </motion.li>
                                         ))}
                                     </ul>
-                                    {/* Thin divider */}
-                                    <motion.div
-                                        aria-hidden="true"
-                                        initial={{ opacity: 0, y: 16 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 0 }}
-                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
-                                        className="mt-4 mx-auto h-px w-10 bg-sumi/15"
-                                    />
+                                </nav>
 
-                                    {/* Bottom Actions & Branding */}
-                                    <motion.div
-                                        initial={{ opacity: 0, y: 16 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, y: 0 }}
-                                        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
-                                        className="mt-7 flex flex-col md:flex-row md:items-end justify-between gap-8 w-full text-center md:text-left"
-                                    >
+                                {/* Bottom section — pinned to bottom of panel */}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 16 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 0 }}
+                                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
+                                >
+                                    <div aria-hidden="true" className="h-px w-10 mx-auto bg-sumi/15 mb-8" />
+                                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 text-center md:text-left">
                                         <div className="space-y-4 flex flex-col items-center md:items-start">
                                             <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/40 font-medium">
                                                 Custom Celebrations
@@ -281,8 +275,9 @@ export default function Navbar() {
                                                 Est. 2022 / Kanata, ON
                                             </span>
                                         </div>
-                                    </motion.div>
-                                </nav>
+                                    </div>
+                                </motion.div>
+
                             </div>
                         </motion.div>
                     </>
