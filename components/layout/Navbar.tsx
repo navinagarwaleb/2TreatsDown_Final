@@ -243,27 +243,44 @@ export default function Navbar() {
                                         className="mt-4 mx-auto h-px w-10 bg-sumi/15"
                                     />
 
-                                    {/* Social / CTA */}
+                                    {/* Bottom Actions & Branding */}
                                     <motion.div
                                         initial={{ opacity: 0, y: 16 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         exit={{ opacity: 0, y: 0 }}
                                         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
-                                        className="mt-7 flex items-center justify-center gap-7"
+                                        className="mt-7 flex flex-col md:flex-row md:items-end justify-between gap-8 w-full text-center md:text-left"
                                     >
-                                        <Link
-                                            href="/custom-cake"
-                                            className="group relative inline-flex items-center justify-center font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/45 hover:text-sumi transition-colors duration-300"
-                                        >
-                                            <span className="relative inline-flex overflow-hidden">
-                                                <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[140%]">
-                                                    Order a Custom Cake
-                                                </span>
-                                                <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-[140%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
-                                                    Order a Custom Cake
-                                                </span>
+                                        <div className="space-y-4 flex flex-col items-center md:items-start">
+                                            <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/40 font-medium">
+                                                Custom Celebrations
                                             </span>
-                                        </Link>
+                                            <Link
+                                                href="/custom-cake"
+                                                className="group relative inline-flex items-center justify-center font-sans text-[12px] tracking-[0.16em] uppercase text-sumi border border-sumi/25 px-6 py-3 transition-[color,border-color] duration-500 ease-text-roll hover:text-washi hover:border-sumi"
+                                            >
+                                                <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+                                                    <span className="absolute inset-y-0 -inset-x-px bg-sumi origin-bottom scale-y-0 transition-transform duration-500 ease-text-roll group-hover:scale-y-100" />
+                                                </span>
+                                                <span className="relative inline-flex overflow-hidden">
+                                                    <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[140%]">
+                                                        Request Custom Cake
+                                                    </span>
+                                                    <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-[140%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
+                                                        Request Custom Cake
+                                                    </span>
+                                                </span>
+                                            </Link>
+                                        </div>
+
+                                        <div className="text-center md:text-right">
+                                            <p className="font-heading italic text-lg text-sumi/60">
+                                                Quiet indulgence, deliberately crafted.
+                                            </p>
+                                            <span className="block font-sans text-[10px] tracking-[0.16em] uppercase text-sumi/45 mt-2">
+                                                Est. 2022 / Kanata, ON
+                                            </span>
+                                        </div>
                                     </motion.div>
                                 </nav>
                             </div>
