@@ -180,55 +180,66 @@ export default function FAQ() {
     ];
 
     return (
-        <div className="container mx-auto px-4 max-w-4xl py-16 md:py-24">
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4 text-center">
-                FAQs – Everything You Need to Know
-            </h1>
-            <p className="text-center text-lg text-brand-dark/70 mb-16">
-                Got questions? We’ve got answers! Here are some of the most common questions we get about our treats, pupcakes, cakes, and ordering process.
-            </p>
+        <main className="min-h-screen bg-brand-light pb-24 animate-in fade-in duration-500">
+            {/* Header Section (Matching Reviews and About Page) */}
+            <section className="bg-brand-main py-20 border-b border-brand-pink relative overflow-hidden">
+                <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-brand-dark mb-6 tracking-tight">
+                        FAQs
+                    </h1>
+                    <p className="text-lg md:text-xl text-brand-dark/80 max-w-2xl mx-auto leading-relaxed">
+                        Got questions? We’ve got answers! Here are some of the most common questions we get about our treats, pupcakes, cakes, and ordering process.
+                    </p>
+                </div>
+                {/* Decorative Elements */}
+                <div className="absolute top-10 left-10 w-24 h-24 bg-brand-orange/10 rounded-full blur-2xl"></div>
+                <div className="absolute bottom-10 right-10 w-32 h-32 bg-brand-brown/10 rounded-full blur-2xl"></div>
+            </section>
 
-            <div className="space-y-12 shrink-0">
-                {faqs.map((section, sidx) => (
-                    <motion.div
-                        key={sidx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: sidx * 0.1, duration: 0.5 }}
-                        className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-brand-pink/50"
-                    >
-                        <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-orange mb-8 pb-4 border-b border-brand-pink">
-                            {section.category}
-                        </h2>
-                        <div className="space-y-8">
-                            {section.questions.map((faq, qidx) => (
-                                <FAQItem key={qidx} q={faq.q} a={faq.a} />
-                            ))}
-                        </div>
-                    </motion.div>
-                ))}
-            </div>
+            {/* Content Section */}
+            <div className="container mx-auto px-4 max-w-4xl py-20 md:py-28">
+                <div className="space-y-12 shrink-0">
+                    {faqs.map((section, sidx) => (
+                        <motion.div
+                            key={sidx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: sidx * 0.1, duration: 0.5 }}
+                            className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-brand-pink/50 text-left"
+                        >
+                            <h2 className="text-2xl md:text-3xl font-heading font-bold text-brand-orange mb-8 pb-4 border-b border-brand-pink">
+                                {section.category}
+                            </h2>
+                            <div className="space-y-8">
+                                {section.questions.map((faq, qidx) => (
+                                    <FAQItem key={qidx} q={faq.q} a={faq.a} />
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="mt-16 text-center"
-            >
-                <h2 className="text-3xl font-heading font-bold text-brand-dark mb-4 flex items-center justify-center gap-3">
-                    <Mail className="w-8 h-8 text-brand-orange" /> Still Have Questions?
-                </h2>
-                <p className="text-brand-dark/70 mb-6">
-                    Didn’t see your question here? Feel free to reach out — we’re always happy to help!
-                </p>
-                <a
-                    href="mailto:contact@2treatsdown.com"
-                    className="inline-block bg-brand-orange hover:bg-brand-brown transition-colors text-brand-dark hover:text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    className="mt-20 text-center"
                 >
-                    Contact Us
-                </a>
-            </motion.div>
-        </div>
+                    <h2 className="text-3xl font-heading font-bold text-brand-dark mb-4 flex items-center justify-center gap-3">
+                        <Mail className="w-8 h-8 text-brand-orange" /> Still Have Questions?
+                    </h2>
+                    <p className="text-brand-dark/70 mb-6">
+                        Didn’t see your question here? Feel free to reach out — we’re always happy to help!
+                    </p>
+                    <a
+                        href="mailto:2treatsdown@gmail.com"
+                        className="inline-block bg-brand-pink hover:bg-brand-brown transition-colors text-brand-dark hover:text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
+                    >
+                        Contact Us
+                    </a>
+                </motion.div>
+            </div>
+        </main>
     );
 }

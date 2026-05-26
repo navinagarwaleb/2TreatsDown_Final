@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
-import { Outfit, Inter } from "next/font/google";
+import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/shop/CartDrawer";
+import EntranceLoader from "@/components/layout/EntranceLoader";
 
-const outfit = Outfit({
+const cormorant = Cormorant_Garamond({
     subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
     variable: "--font-heading",
 });
 
-const inter = Inter({
+const sans = Plus_Jakarta_Sans({
     subsets: ["latin"],
+    weight: ["300", "400", "500", "600"],
     variable: "--font-sans",
 });
 
@@ -47,13 +50,14 @@ export default function RootLayout({
                         font-style: normal;
                     }
                     :root {
-                        --font-sans: 'Switzer', sans-serif;
+                        --font-sans: 'Switzer', var(--font-sans), sans-serif;
                     }
                 `}} />
             </head>
             <body
-                className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col bg-brand-main text-brand-dark antialiased transition-colors overflow-x-hidden`}
+                className={`${sans.variable} ${cormorant.variable} font-sans min-h-screen flex flex-col bg-surface text-sumi antialiased transition-colors overflow-x-hidden`}
             >
+                <EntranceLoader />
                 <Navbar />
                 <CartDrawer />
                 <main className="flex-grow flex flex-col">{children}</main>
@@ -62,3 +66,4 @@ export default function RootLayout({
         </html>
     );
 }
+

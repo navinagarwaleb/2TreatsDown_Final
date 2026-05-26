@@ -26,7 +26,7 @@ export default function ReviewsPage() {
             </section>
 
             {/* Reviews Grid Section */}
-            <section className="container mx-auto px-4 max-w-7xl -mt-8 relative z-20">
+            <section className="container mx-auto px-4 max-w-7xl pt-16 relative z-20">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {reviews.map((review) => (
                         <div key={review.id} className="bg-white rounded-3xl p-8 shadow-sm border border-brand-pink/30 flex flex-col hover:shadow-md transition-shadow">

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { WordSlideUp } from "@/components/ui/ScrollReveal";
 
 const reviews = [
     {
@@ -23,35 +24,44 @@ const reviews = [
 
 export default function Testimonials() {
     return (
-        <section className="bg-brand-pink/30 py-24">
+        <section className="bg-surface py-24 border-b border-sumi/10">
             <div className="container max-w-7xl mx-auto px-4">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl font-heading font-bold text-brand-dark">Happy Tails</h2>
-                    <p className="text-lg text-brand-dark/70 mt-4">Don't just take our word for it.</p>
-                </motion.div>
+                <div className="text-center mb-16 space-y-4">
+                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-sumi">
+                        <WordSlideUp text="Happy Tails" />
+                    </h2>
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-base md:text-lg text-sumi/70"
+                    >
+                        Don't just take our word for it.
+                    </motion.p>
+                </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {reviews.map((review, idx) => (
                         <motion.div
                             key={review.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 0.4 }}
-                            className="bg-white p-8 rounded-[2rem] shadow-sm border border-brand-pink relative"
+                            transition={{ delay: idx * 0.1, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                            className="bg-white rounded-3xl p-8 shadow-sm border border-brand-pink/30 flex flex-col hover:shadow-md transition-shadow relative text-left"
                         >
-                            <div className="flex gap-1 text-brand-orange mb-6">
+                            <div className="flex items-center gap-1 mb-4">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} className="h-5 w-5 fill-current" />
+                                    <Star key={i} className="w-5 h-5 fill-brand-orange text-brand-orange" />
                                 ))}
                             </div>
-                            <p className="text-brand-dark/80 italic mb-6 text-lg relative z-10">"{review.text}"</p>
-                            <p className="font-bold text-brand-brown">— {review.author}</p>
+                            <p className="text-sumi/80 text-base leading-relaxed mb-6 flex-grow whitespace-pre-wrap">
+                                "{review.text}"
+                            </p>
+                            <div className="mt-auto pt-6 border-t border-brand-pink/30 flex flex-col">
+                                <span className="font-bold text-sumi text-lg">{review.author}</span>
+                            </div>
                         </motion.div>
                     ))}
                 </div>

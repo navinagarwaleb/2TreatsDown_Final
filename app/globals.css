@@ -1,29 +1,86 @@
 @import "tailwindcss";
 
 @theme {
-  /* Exact Inspiration Palette */
-  --color-brand-main: #fdf6f2;
-  /* Body Background */
-  --color-brand-brown: #322120;
-  /* Footer/Espresso */
-  --color-brand-dark: #010101;
-  /* Title Text */
-  --color-brand-orange: #f1bbbd;
-  /* Pink Dim / CTA */
-  --color-brand-pink: #fbede5;
-  /* Secondary Pink Background */
-  --color-brand-accent: #d29878;
-  /* Soft Terracotta */
+  /* Brand Guidelines Palette */
+  --color-surface: #F6F5F2;       /* Primary canvas background */
+  --color-sumi: #0F1623;          /* Primary typography, borders, structures */
+  --color-brand-pink: #D5A5A5;    /* Solid Pink panels, footers, card backgrounds */
+  --color-clay-rose: #8A5858;     /* Accent text, buttons, icons on white */
+  --color-washi: #F3F0E8;         /* Washi cream for text/inputs on pink panels */
+
+  /* Map old names for backwards compatibility across pages */
+  --color-brand-main: #F6F5F2;
+  --color-brand-dark: #0F1623;
+  --color-brand-brown: #8A5858;
+  --color-brand-orange: #8A5858;
+  --color-brand-accent: #D5A5A5;
+
+  /* Custom Transitions & Timings */
+  --ease-text-roll: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Font Families */
+  --font-heading: var(--font-heading), Georgia, serif;
+  --font-sans: var(--font-sans), sans-serif;
+  --font-display: var(--font-heading), Georgia, serif;
 }
 
 @layer base {
   :root {
-    background-color: var(--color-brand-main);
-    color: var(--color-brand-dark);
+    background-color: var(--color-surface);
+    color: var(--color-sumi);
   }
 
   body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--color-surface);
+    color: var(--color-sumi);
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: var(--font-heading), Georgia, serif;
   }
 }
+
+/* Scroll cue line animation matching inspiration */
+@keyframes scrollCue {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50.01% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+.scroll-cue-line::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  animation: scrollCue 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Custom Text Roll transition utility class */
+.ease-text-roll {
+  transition-timing-function: var(--ease-text-roll);
+}
+
+/* Hide scrollbar utility for horizontal scroll regions */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

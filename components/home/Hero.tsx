@@ -1,71 +1,77 @@
 "use client";
 
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Boxes } from "@/components/ui/background-boxes";
-import { PawPrint, Cake } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Hero() {
+    const handleScroll = () => {
+        const introSection = document.getElementById("main-content-start");
+        if (introSection) {
+            introSection.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    const { scrollY } = useScroll();
+
+    // Smoothly blur and dim brightness as the user scrolls
+    const filterEffect = useTransform(
+        scrollY,
+        [0, 800],
+        ["blur(0px) brightness(0.88)", "blur(16px) brightness(0.65)"]
+    );
+
+    // Subtle scale-up zoom parallax effect
+    const scaleEffect = useTransform(scrollY, [0, 800], [1.05, 1.15]);
+
+    // Fades image slightly as the content scrolls up
+    const opacityEffect = useTransform(scrollY, [0, 800], [1, 0.65]);
+
     return (
-        <section className="relative bg-brand-main pt-12 md:pt-24 pb-16 md:pb-32 overflow-hidden">
-            {/* Background Boxes Mask */}
-            <div className="absolute inset-0 w-full h-full bg-brand-main z-10 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-            <Boxes />
+        <section className="sticky top-0 z-0 h-[100svh] w-full overflow-hidden bg-surface">
+            {/* Background Image (Single Image Hero with scroll-driven blur & scale) */}
+            <div className="absolute inset-0 w-full h-full select-none pointer-events-none overflow-hidden">
+                <motion.img
+                    src="/images/hero-image.webp"
+                    alt="Happy dog enjoying 2 Treats Down treats"
+                    className="w-full h-full object-cover object-center"
+                    style={{
+                        filter: filterEffect,
+                        scale: scaleEffect,
+                        opacity: opacityEffect,
+                    }}
+                />
+                
+                {/* Radial Vignette Mask (darkens edges using Sumi) */}
+                <div 
+                    className="absolute inset-0 z-[2]" 
+                    style={{
+                        background: "radial-gradient(circle, transparent 20%, rgba(15, 22, 37, 0.5) 100%)",
+                    }}
+                />
 
-            <div className="container relative z-20 px-4 mx-auto max-w-7xl pointer-events-none">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="flex flex-col space-y-6 text-center lg:text-left pointer-events-auto"
-                    >
-                        <h1 className="font-heading text-5xl md:text-6xl font-bold text-brand-dark leading-tight flex flex-wrap items-center justify-center lg:justify-start gap-x-2">
-                            Celebrate Your Pup with <span className="text-brand-orange">Handmade</span> Treats <PawPrint className="w-10 h-10 text-brand-orange inline-block" />
-                        </h1>
-                        <p className="text-lg md:text-xl text-brand-dark/80 max-w-lg mx-auto lg:mx-0">
-                            Gourmet, healthy, and preservative-free dog treats and fully personalized custom dog birthday cakes made with love in Kanata.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-                            <Link
-                                href="/custom-cake"
-                                className="bg-brand-orange hover:bg-brand-brown transition-colors text-brand-dark hover:text-white px-8 py-4 rounded-full font-bold text-lg shadow-md"
-                            >
-                                Order Custom Cake
-                            </Link>
-                            <Link
-                                href="/shop"
-                                className="bg-white border-2 border-brand-orange text-brand-orange hover:bg-brand-orange hover:text-brand-dark transition-colors px-8 py-4 rounded-full font-bold text-lg shadow-sm"
-                            >
-                                Shop
-                            </Link>
-                        </div>
-                    </motion.div>
-
-                    {/* Hero Image / Collage Placeholder */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative lg:h-[500px] w-full flex justify-center items-center pointer-events-auto"
-                    >
-                        <div className="relative w-full max-w-md aspect-square">
-                            <div className="w-full h-full rounded-[3rem] overflow-hidden shadow-2xl bg-brand-pink border-8 border-white">
-                                <img
-                                    src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&q=80"
-                                    alt="Happy dog eating a gourmet treat"
-                                    className="object-cover w-full h-full"
-                                />
-                            </div>
-                            {/* Floating Badge */}
-                            <div className="absolute -bottom-6 -right-6 lg:-right-10 bg-white px-6 py-4 rounded-full shadow-xl flex items-center gap-3 border border-brand-pink animate-bounce z-10 w-max max-w-[90vw]">
-                                <Cake className="w-8 h-8 text-brand-orange" />
-                                <span className="font-bold text-brand-brown whitespace-nowrap">100% Custom</span>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
+                {/* Top/Bottom Gradient Overlay */}
+                <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-sumi/40 to-transparent z-[3]" />
+                <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-sumi/40 to-transparent z-[3]" />
             </div>
+
+
+            {/* Scroll Cue (Top Right/Bottom Center Overlay matching inspiration) */}
+            <motion.button
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.5, duration: 0.8 }}
+                onClick={handleScroll}
+                className="group absolute bottom-10 md:bottom-14 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-5 md:gap-6 cursor-pointer p-2 focus:outline-none"
+            >
+                <span className="relative inline-flex overflow-hidden font-sans text-[11px] tracking-[0.18em] uppercase text-washi/80">
+                    <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-full">
+                        Scroll
+                    </span>
+                    <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-full transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
+                        Scroll
+                    </span>
+                </span>
+                <span aria-hidden="true" className="scroll-cue-line block w-px h-8 md:h-12 bg-washi/60 origin-top" />
+            </motion.button>
         </section>
     );
 }

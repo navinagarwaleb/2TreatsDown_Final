@@ -28,11 +28,11 @@ export default function CustomCakePage() {
                             </li>
                             <li className="flex gap-4">
                                 <span className="w-8 h-8 flex items-center justify-center bg-brand-main text-brand-orange font-bold rounded-full shrink-0">2</span>
-                                <span><strong className="text-brand-dark">We review it</strong> and send you a custom quote and confirmation within 48 hours.</span>
+                                <span><strong className="text-brand-dark">Collaborative Design</strong> — We will get in touch with you to discuss designs so a vision board can be worked out along with a customized price quote.</span>
                             </li>
                             <li className="flex gap-4">
                                 <span className="w-8 h-8 flex items-center justify-center bg-brand-main text-brand-orange font-bold rounded-full shrink-0">3</span>
-                                <span><strong className="text-brand-dark">Pick it up</strong> from our Kanata bakery on your scheduled day and celebrate!</span>
+                                <span><strong className="text-brand-dark">Kanata Pickup</strong> — Pickup will be from our Kanata location based on the coordinated date.</span>
                             </li>
                         </ul>
                     </div>

@@ -1,75 +1,263 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { WordSlideUp } from "@/components/ui/ScrollReveal";
 
 const catalogs = [
     {
         title: "2025 Catalog (Cakes)",
+        tabLabel: "Cakes '25",
+        category: "2025 Collection",
+        headline: "Celebrating in style.",
+        description: "Our latest custom cakes catalog featuring bespoke designs, premium decorations, and sizing options for your dog's milestones.",
         url: "https://www.canva.com/design/DAG6wEb1bMk/Zv3G4DUKVPZGIBWhgSjeWg/edit?utm_content=DAG6wEb1bMk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
         img: "/images/catalogs/2025_Cakes.jpg"
     },
     {
-        title: "2024 Catalog (Cakes)",
-        url: "https://www.canva.com/design/DAG_ndBx-uI/TnWpOzgda36Hl-2GvReFaQ/edit?utm_content=DAG_ndBx-uI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "/images/catalogs/2024_Cakes.jpg"
-    },
-    {
-        title: "2023 Catalog (Cakes)",
-        url: "https://www.canva.com/design/DAG-28nHZ2g/2l-JjASiQFj3VNoRoU0gtg/view?utm_content=DAG-28nHZ2g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0e1b2074d1",
-        img: "/images/catalogs/2023_Cakes.jpg"
-    },
-    {
         title: "2025 Catalog (Pupcakes)",
+        tabLabel: "Pupcakes '25",
+        category: "2025 Collection",
+        headline: "Bite-sized indulgence.",
+        description: "Discover our 2025 selection of gourmet pupcakes, hand-crafted with organic ingredients and dog-safe frostings.",
         url: "https://www.canva.com/design/DAG9k33Nzek/kVIXQbSWpCpUxBwauMFkng/view?utm_content=DAG9k33Nzek&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5a1c91faca",
         img: "/images/catalogs/2025_Pupcakes.jpg"
     },
     {
+        title: "2024 Catalog (Cakes)",
+        tabLabel: "Cakes '24",
+        category: "2024 Collection",
+        headline: "Time-tested recipes.",
+        description: "Browse our 2024 custom cake creations, detailing the recipes and frosting styles that made celebrations memorable.",
+        url: "https://www.canva.com/design/DAG_ndBx-uI/TnWpOzgda36Hl-2GvReFaQ/edit?utm_content=DAG_ndBx-uI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+        img: "/images/catalogs/2024_Cakes.jpg"
+    },
+    {
         title: "2024 Catalog (Pupcakes)",
+        tabLabel: "Pupcakes '24",
+        category: "2024 Collection",
+        headline: "A year of treats.",
+        description: "A retrospective of our popular 2024 pupcakes, detailing sizing, recipes, and seasonal variations.",
         url: "https://www.canva.com/design/DAG_nQAxsjc/rzc4kgH7WhIjbOidR7xgJQ/edit?utm_content=DAG_nQAxsjc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
         img: "/images/catalogs/2024_Pupcakes.jpg"
     },
     {
+        title: "2023 Catalog (Cakes)",
+        tabLabel: "Cakes '23",
+        category: "2023 Collection",
+        headline: "How we began.",
+        description: "Explore the cake catalog that launched 2 Treats Down. Grounded in simplicity, taste, and premium quality ingredients.",
+        url: "https://www.canva.com/design/DAG-28nHZ2g/2l-JjASiQFj3VNoRoU0gtg/view?utm_content=DAG-28nHZ2g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0e1b2074d1",
+        img: "/images/catalogs/2023_Cakes.jpg"
+    },
+    {
         title: "2023 Catalog (Pupcakes)",
+        tabLabel: "Pupcakes '23",
+        category: "2023 Collection",
+        headline: "Simple & wholesome.",
+        description: "Our original pupcake catalog from 2023. Preservative-free, healthy treats that helped build our amazing Ottawa community.",
         url: "https://www.canva.com/design/DAG-3dNxQ8A/nnr-ulZez2D4ZyClc8ORWA/edit?utm_content=DAG-3dNxQ8A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
         img: "/images/catalogs/2023_Pupcakes.jpg"
     },
 ];
 
 export default function Catalogs() {
-    return (
-        <section className="bg-white py-24 border-t border-brand-pink/50">
-            <div className="container mx-auto px-4 max-w-7xl">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-16"
-                >
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4">Explore Our Catalogs</h2>
-                    <p className="text-lg text-brand-dark/70 max-w-2xl mx-auto">Click through below to view our detailed offerings, custom collection menus, and specific ingredients guides!</p>
-                </motion.div>
+    const [activeIndex, setActiveIndex] = useState(0);
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {catalogs.map((catalog, idx) => (
-                        <motion.a
-                            href={catalog.url}
+    return (
+        <section className="bg-surface py-24 md:py-32 border-b border-sumi/10 space-section relative overflow-hidden">
+            {/* Header Title - Aligned to left screen margin */}
+            <div className="px-6 md:px-12 lg:px-20 xl:px-28 mb-10 md:mb-16 w-full">
+                <h2 className="font-heading text-[clamp(1.75rem,3.6vw,2.75rem)] leading-[1.1] tracking-[0.005em] text-sumi font-bold">
+                    <WordSlideUp text="Explore Our Catalogs." className="justify-start" />
+                </h2>
+            </div>
+
+            {/* Desktop Section (md:block) - Fluid Left-Aligned 50/50 Grid */}
+            <div className="hidden md:block px-6 md:px-12 lg:px-20 xl:px-28 w-full">
+                {/* 50/50 split grid where left cell contains image and right cell contains text */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 xl:gap-20 items-stretch">
+                    {/* Left Column: Interactive Image Carousel, left-aligned inside its grid cell */}
+                    <div className="w-full flex justify-start">
+                        <a
+                            href={catalogs[activeIndex].url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            key={idx}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 }}
-                            className="group block relative rounded-[2rem] overflow-hidden aspect-video shadow-md hover:shadow-2xl transition-all duration-300 border border-brand-pink/50 cursor-pointer"
+                            className="group relative block w-full max-w-[480px] aspect-[4/5] overflow-hidden rounded-md shadow-lg border border-sumi/10 cursor-pointer"
                         >
-                            <img src={catalog.img} alt={catalog.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                            <div className="absolute inset-0 bg-brand-dark/40 group-hover:bg-brand-dark/20 transition-colors duration-300 flex flex-col items-center justify-center p-6 text-center">
-                                <h3 className="text-white font-bold text-2xl mb-4 opacity-100 drop-shadow-lg">{catalog.title}</h3>
-                                <span className="bg-white text-brand-orange px-6 py-3 rounded-full font-bold shadow-lg transform translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                    View on Canva &rarr;
+                            {/* Overlay Index */}
+                            <div className="absolute top-6 left-6 md:top-8 md:left-8 z-10 flex items-baseline gap-2 pointer-events-none">
+                                <span className="font-heading text-[clamp(1.8rem,3vw,2.4rem)] font-bold leading-none tracking-[0.01em] text-washi drop-shadow-md">
+                                    {String(activeIndex + 1).padStart(2, '0')}
+                                </span>
+                                <span className="font-sans text-[11px] tracking-[0.18em] uppercase text-washi/70 drop-shadow-sm">
+                                    / {String(catalogs.length).padStart(2, '0')}
                                 </span>
                             </div>
-                        </motion.a>
+
+                            {/* Image Cross-fade */}
+                            <div className="absolute inset-0 bg-sumi/5 overflow-hidden">
+                                <AnimatePresence mode="wait">
+                                    <motion.img
+                                        key={activeIndex}
+                                        src={catalogs[activeIndex].img}
+                                        alt={catalogs[activeIndex].title}
+                                        initial={{ opacity: 0, scale: 1.03 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0 }}
+                                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                        className="w-full h-full object-cover transition-transform duration-700 ease-text-roll group-hover:scale-105"
+                                    />
+                                </AnimatePresence>
+                            </div>
+                        </a>
+                    </div>
+
+                    {/* Right Column: Descriptions & Tab Triggers - stretches and aligns perfectly */}
+                    <div className="flex flex-col justify-between h-full py-2 max-w-[520px] w-full">
+                        {/* Top Group: Text & Button */}
+                        <div className="relative flex-grow flex flex-col justify-start">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeIndex}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -15 }}
+                                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                                    className="w-full text-left space-y-6"
+                                >
+                                    <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/45 font-semibold">
+                                        {catalogs[activeIndex].category}
+                                    </span>
+                                    <h3 className="font-heading text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1.08] tracking-[0.005em] text-sumi font-bold">
+                                        {catalogs[activeIndex].headline}
+                                    </h3>
+                                    <p className="font-sans text-base leading-relaxed text-sumi/70">
+                                        {catalogs[activeIndex].description}
+                                    </p>
+                                    
+                                    <div className="pt-4">
+                                        <a
+                                            href={catalogs[activeIndex].url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group relative inline-flex items-center justify-center font-sans text-[12px] tracking-[0.16em] uppercase text-sumi border border-sumi/25 px-8 py-4 transition-[color,border-color] duration-500 ease-text-roll hover:text-washi hover:border-sumi rounded-[4px]"
+                                        >
+                                            <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+                                                <span className="absolute inset-y-0 -inset-x-px bg-sumi origin-bottom scale-y-0 transition-transform duration-500 ease-text-roll group-hover:scale-y-100" />
+                                            </span>
+                                            <span className="relative inline-flex overflow-hidden">
+                                                <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[140%]">
+                                                    View on Canva
+                                                </span>
+                                                <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-[140%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
+                                                    View on Canva
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
+
+                        {/* Bottom Group: Interactive Tab bar spanning exactly across the container */}
+                        <div className="mt-12 md:mt-0 pt-6">
+                            <div className="flex items-center gap-4 lg:gap-6 w-full">
+                                {catalogs.map((catalog, idx) => (
+                                    <button
+                                        key={idx}
+                                        onClick={() => setActiveIndex(idx)}
+                                        className="group flex-1 text-left relative pt-4 cursor-pointer focus:outline-none"
+                                        aria-label={`Show ${catalog.title}`}
+                                    >
+                                        {/* Progress Bar Line */}
+                                        <span className="absolute top-0 left-0 right-0 h-[1.5px] bg-sumi/10 overflow-hidden rounded-full">
+                                            {activeIndex === idx && (
+                                                <motion.span
+                                                    key={idx}
+                                                    initial={{ scaleX: 0 }}
+                                                    animate={{ scaleX: 1 }}
+                                                    style={{ originX: 0 }}
+                                                    transition={{ duration: 8, ease: "linear" }}
+                                                    className="absolute inset-y-0 left-0 bg-sumi h-full w-full"
+                                                    onAnimationComplete={() => {
+                                                        setActiveIndex((prev) => (prev + 1) % catalogs.length);
+                                                    }}
+                                                />
+                                            )}
+                                        </span>
+                                        
+                                        {/* Text Label */}
+                                        <span className={`block font-sans text-[10px] md:text-[11px] tracking-[0.16em] uppercase whitespace-nowrap transition-colors duration-300 ${
+                                            activeIndex === idx ? "text-sumi font-semibold" : "text-sumi/40 group-hover:text-sumi/70"
+                                        }`}>
+                                            {String(idx + 1).padStart(2, '0')} · {catalog.tabLabel}
+                                        </span>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Mobile Horizontal Scrolling Cards (md:hidden) */}
+            <div className="md:hidden w-full overflow-hidden">
+                <div className="flex gap-6 overflow-x-auto pb-8 px-6 scrollbar-hide snap-x snap-mandatory">
+                    {catalogs.map((catalog, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: 40 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
+                            className="flex-shrink-0 w-[78vw] sm:w-[320px] snap-center"
+                        >
+                            <a
+                                href={catalog.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative block aspect-[9/15] overflow-hidden rounded-lg border border-sumi/10 shadow-md"
+                            >
+                                {/* Image */}
+                                <img
+                                    src={catalog.img}
+                                    alt={catalog.title}
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-text-roll group-hover:scale-105"
+                                />
+                                
+                                {/* Bottom vignette shadow */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-sumi/80 via-sumi/20 to-transparent pointer-events-none" />
+                                
+                                {/* Top index overlay */}
+                                <div className="absolute top-5 left-5 z-10 flex items-baseline gap-1 pointer-events-none">
+                                    <span className="font-heading text-lg font-bold text-washi">
+                                        {String(idx + 1).padStart(2, '0')}
+                                    </span>
+                                    <span className="font-sans text-[10px] uppercase text-washi/70">
+                                        / {String(catalogs.length).padStart(2, '0')}
+                                    </span>
+                                </div>
+
+                                {/* Text content absolute at bottom */}
+                                <div className="absolute inset-x-0 bottom-0 p-6 space-y-2 text-left">
+                                    <span className="block font-sans text-[10px] tracking-[0.18em] uppercase text-washi/70 font-semibold">
+                                        {catalog.category}
+                                    </span>
+                                    <h3 className="font-heading text-xl font-bold text-washi tracking-tight leading-snug">
+                                        {catalog.headline}
+                                    </h3>
+                                    <p className="font-sans text-xs text-washi/80 line-clamp-2 leading-relaxed">
+                                        {catalog.description}
+                                    </p>
+                                    
+                                    <div className="pt-2 flex items-center text-washi font-sans text-[11px] font-semibold tracking-wider uppercase gap-2 group-hover:text-brand-pink transition-colors">
+                                        <span>View on Canva</span>
+                                        <span className="transform group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </motion.div>
                     ))}
                 </div>
             </div>

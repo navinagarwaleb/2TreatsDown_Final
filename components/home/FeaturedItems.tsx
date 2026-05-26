@@ -4,25 +4,25 @@ import ProductCard from "@/components/shop/ProductCard";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { SquareProduct } from "@/lib/square";
+import { WordSlideUp } from "@/components/ui/ScrollReveal";
 
 export default function FeaturedItems({ products }: { products: SquareProduct[] }) {
     return (
-        <section className="bg-white py-24">
+        <section className="bg-surface py-24 border-b border-sumi/10">
             <div className="container max-w-7xl mx-auto px-4">
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+                    <h2 className="text-4xl font-heading font-bold text-sumi">
+                        <WordSlideUp text="Pup-Approved Favorites" />
+                    </h2>
+                    <motion.p 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-base md:text-lg text-sumi/70"
                     >
-                        <h2 className="text-4xl font-heading font-bold text-brand-dark mb-4">
-                            Pup-Approved Favorites
-                        </h2>
-                        <p className="text-lg text-brand-dark/70">
-                            Hand-crafted with love, using only the finest, all-natural ingredients. No hidden nasties, just pure joy in every bite.
-                        </p>
-                    </motion.div>
+                        Hand-crafted with love, using only the finest, all-natural ingredients. No hidden nasties, just pure joy in every bite.
+                    </motion.p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -32,7 +32,7 @@ export default function FeaturedItems({ products }: { products: SquareProduct[] 
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            transition={{ duration: 0.6, delay: idx * 0.1 }}
                         >
                             <ProductCard {...product} />
                         </motion.div>
@@ -47,7 +47,7 @@ export default function FeaturedItems({ products }: { products: SquareProduct[] 
                 >
                     <Link
                         href="/shop"
-                        className="inline-block text-brand-orange hover:text-brand-brown font-bold text-lg border-b-2 border-brand-orange hover:border-brand-brown transition-colors pb-1"
+                        className="inline-block text-clay-rose hover:text-sumi font-sans text-xs font-semibold uppercase tracking-wider border-b border-clay-rose hover:border-sumi transition-colors pb-1.5"
                     >
                         View All Treats &rarr;
                     </Link>
@@ -56,3 +56,4 @@ export default function FeaturedItems({ products }: { products: SquareProduct[] 
         </section>
     );
 }
+

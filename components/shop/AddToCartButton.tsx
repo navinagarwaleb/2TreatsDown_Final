@@ -22,7 +22,7 @@ export default function AddToCartButton({ product }: { product: SquareProduct })
             disabled={added}
             className={`relative w-full overflow-hidden transition-all duration-300 py-4 px-8 rounded-full font-bold text-lg shadow-xl flex items-center justify-center gap-3 ${added
                 ? "bg-brand-brown text-white"
-                : "bg-brand-orange hover:bg-brand-brown text-brand-dark hover:text-white"
+                : "bg-brand-pink hover:bg-brand-brown text-brand-dark hover:text-white"
                 }`}
         >
             <motion.div
