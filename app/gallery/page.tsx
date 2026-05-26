@@ -5,20 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
-// List of gallery images
 const galleryImages = [
+    { src: "/images/gallery/1st.webp", alt: "Custom dog birthday cake with specialty frosting" },
+    { src: "/images/gallery/2nd.webp", alt: "Premium dehydrated dog treats and healthy ingredients" },
+    { src: "/images/gallery/3rd.webp", alt: "Organic preservative-free celebration dog cookies" },
+    { src: "/images/gallery/4th.webp", alt: "Handmade small-batch gourmet pupcakes and cupcakes" },
+    { src: "/images/gallery/5th.webp", alt: "Artisan dog treats prepared in Kanata" },
+    { src: "/images/gallery/6th.webp", alt: "Gourmet decorated celebration cookies for dogs" },
     { src: "/images/gallery/ComfyUI_00028_.webp", alt: "Gourmet decorated celebration cake for dogs" },
     { src: "/images/gallery/ComfyUI_00029_.webp", alt: "Freshly baked dog treats and cookies" },
     { src: "/images/gallery/ComfyUI_00030_.webp", alt: "Custom dog birthday cake with natural frosting" },
     { src: "/images/gallery/ComfyUI_00031_.webp", alt: "All-natural dehydrated healthy dog treats" },
-    { src: "/images/gallery/ComfyUI_00032_.webp", alt: "Personalized custom dog cake with name topper" },
-    { src: "/images/gallery/ComfyUI_00033_.webp", alt: "Handmade small-batch gourmet dog treats" },
-    { src: "/images/gallery/ComfyUI_00034_.webp", alt: "Celebration dog cupcakes and pupcakes" },
-    { src: "/images/gallery/ComfyUI_00035_.webp", alt: "Organic preservative-free dog biscuits" },
-    { src: "/images/gallery/ComfyUI_00036_.webp", alt: "Specialty decorated dog birthday cake" },
-    { src: "/images/gallery/ComfyUI_00037_.webp", alt: "Premium dog treat selection" },
-    { src: "/images/gallery/ComfyUI_00038_.webp", alt: "Beautiful custom iced cookies for dogs" },
-    { src: "/images/gallery/ComfyUI_00040_.webp", alt: "Artisan birthday cake for dogs" }
+    { src: "/images/gallery/ComfyUI_00040_.webp", alt: "Artisan birthday cake for dogs" },
+    { src: "/images/gallery/end.webp", alt: "Fresh from our kitchen, baked with love" }
 ];
 
 export default function GalleryPage() {

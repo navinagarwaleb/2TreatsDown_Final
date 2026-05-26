@@ -6,52 +6,40 @@ import { WordSlideUp } from "@/components/ui/ScrollReveal";
 
 const images = [
     {
-        src: "/images/cakes/0m6z6d2hcnrmr0cwnkntwe854c.webp",
+        src: "/images/gallery/1st.webp",
         category: "Birthday Cakes",
-        title: "Piper's first birthday.",
-        caption: "Where it all started — the cake that sparked a bakery.",
+        title: "Specialty birthday cakes.",
+        caption: "Handmade cakes with natural frosting, customized to match your pup's vision.",
     },
     {
-        src: "/images/cakes/ebjvrebdhdrmy0cwnket7he11m.webp",
-        category: "Custom Cakes",
-        title: "Made to order.",
-        caption: "Every detail personalised — theme, colours, and dietary needs.",
-    },
-    {
-        src: "/images/cakes/jrk78gqz7nrmt0cwnkeaw6zh2r.webp",
-        category: "Celebration",
-        title: "Gotcha day done right.",
-        caption: "A handmade cake for the day you brought them home.",
-    },
-    {
-        src: "/images/cakes/replicate-prediction-nn85mrpa6xrmy0cwnkcaetc448.webp",
-        category: "Seasonal",
-        title: "Baked with care.",
-        caption: "Small batches, human-grade ingredients, zero preservatives.",
-    },
-    {
-        src: "/images/cakes/replicate-prediction-qre09x6y4nrmr0cwnkbvxp9qr0.webp",
-        category: "Pupcakes",
-        title: "Bite-sized celebrations.",
-        caption: "Perfect for sharing at the dog park or keeping all to themselves.",
-    },
-    {
-        src: "/images/cakes/replicate-prediction-xm9jc4jh81rmw0cwnkcspexg60.webp",
-        category: "Custom Cakes",
-        title: "Tailored for your pup.",
-        caption: "Allergy-friendly variations available on every design.",
-    },
-    {
-        src: "/images/cakes/replicate-prediction-xy1mce5hb1rmr0cwnkasmtx0ng.webp",
-        category: "Market Favourites",
-        title: "Carp Farmers' Market.",
-        caption: "Sold out on our very first day — and we've never looked back.",
-    },
-    {
-        src: "/images/cakes/t8qfd60stdrmw0cwnkd87pp0gr.webp",
+        src: "/images/gallery/2nd.webp",
         category: "Gourmet Treats",
-        title: "Crafted with love.",
-        caption: "Every treat made by hand in Kanata, ON, since 2022.",
+        title: "Dehydrated treats.",
+        caption: "High-quality, single-ingredient natural chews that dogs love and parents trust.",
+    },
+    {
+        src: "/images/gallery/3rd.webp",
+        category: "Celebrations",
+        title: "Wholesome cookies.",
+        caption: "Clean, preservative-free ingredients decorated beautifully for any occasion.",
+    },
+    {
+        src: "/images/gallery/4th.webp",
+        category: "Pupcakes",
+        title: "Bite-sized pupcakes.",
+        caption: "Perfect portions for sharing at the dog park or keeping all to themselves.",
+    },
+    {
+        src: "/images/gallery/5th.webp",
+        category: "Small Batch",
+        title: "Fresh from the kitchen.",
+        caption: "Baked locally in Kanata, ON, using only ingredients you already know and trust.",
+    },
+    {
+        src: "/images/gallery/6th.webp",
+        category: "Custom Treats",
+        title: "Handcrafted goodies.",
+        caption: "Made thoughtfully as human-style treats, crafted carefully just for dogs.",
     },
 ];
 
