@@ -26,19 +26,10 @@ export default function Testimonials() {
     return (
         <section className="bg-surface py-24 border-b border-sumi/10">
             <div className="container max-w-7xl mx-auto px-4">
-                <div className="text-center mb-16 space-y-4">
-                    <h2 className="text-4xl md:text-5xl font-heading font-bold text-sumi">
-                        <WordSlideUp text="Happy Tails" />
+                <div className="text-center mb-16">
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-sumi leading-tight">
+                        <WordSlideUp text="Loved By Dogs. Trusted By Pawrents" />
                     </h2>
-                    <motion.p 
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-base md:text-lg text-sumi/70"
-                    >
-                        Don't just take our word for it.
-                    </motion.p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

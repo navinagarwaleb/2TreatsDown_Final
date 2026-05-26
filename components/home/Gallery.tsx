@@ -103,21 +103,6 @@ export default function Gallery() {
                                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-text-roll group-hover:scale-105"
                                 />
                             </div>
-
-                            {/* Card text — below image, matching "Our Journal" exactly */}
-                            <div className="mt-4 max-w-[90%]">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <span className="font-sans text-[12px] tracking-[0.16em] uppercase text-sumi/45">
-                                        {item.category}
-                                    </span>
-                                </div>
-                                <h3 className="font-heading text-[18px] md:text-[20px] leading-[1.25] tracking-[0.01em] text-sumi">
-                                    {item.title}
-                                </h3>
-                                <p className="mt-1.5 font-sans text-[14px] leading-[1.5] text-sumi/55 line-clamp-2">
-                                    {item.caption}
-                                </p>
-                            </div>
                         </div>
                     </motion.div>
                 ))}
