@@ -190,11 +190,11 @@ export default function Navbar() {
                             animate={{ y: 0 }}
                             exit={{ y: "-100%" }}
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="fixed inset-0 z-[90] bg-surface flex flex-col justify-center px-6 md:px-12 lg:px-24"
+                            className="fixed inset-0 z-[90] bg-surface flex flex-col justify-center px-6 md:px-12 lg:px-24 overflow-y-auto"
                         >
-                            <div className="max-w-4xl mx-auto w-full flex flex-col justify-between h-[75vh] pt-16 items-center text-center">
+                            <div className="max-w-4xl mx-auto w-full flex flex-col justify-center items-center text-center py-12 md:py-16 min-h-[85vh] gap-10 md:gap-14">
                                 {/* Navigation Links Grid */}
-                                <nav className="flex flex-col space-y-6 md:space-y-8 items-center w-full">
+                                <nav className="flex flex-col space-y-4 md:space-y-5 items-center w-full">
                                     {navLinks.map((link, index) => (
                                         <motion.div
                                             key={link.name}
@@ -211,9 +211,18 @@ export default function Navbar() {
                                             <Link
                                                 href={link.href}
                                                 onClick={link.href === "/" ? handleHomeClick : undefined}
-                                                className="group relative inline-block text-[clamp(2.5rem,7vw,4.5rem)] font-heading font-medium tracking-wide text-sumi transition-colors hover:text-clay-rose"
+                                                className={`group relative inline-block text-[clamp(1.8rem,4.5vw,3rem)] font-heading font-medium tracking-wide transition-colors duration-300 ${
+                                                    pathname === link.href ? "text-clay-rose" : "text-sumi/45 hover:text-clay-rose"
+                                                }`}
                                             >
-                                                <span className="relative z-10">{link.name}</span>
+                                                <span className="relative inline-block overflow-hidden pb-[0.12em]">
+                                                    <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[110%]">
+                                                        {link.name}
+                                                    </span>
+                                                    <span aria-hidden="true" className="absolute inset-0 translate-y-[110%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
+                                                        {link.name}
+                                                    </span>
+                                                </span>
                                                 {pathname === link.href && (
                                                     <motion.span 
                                                         layoutId="activeDot"
@@ -226,7 +235,7 @@ export default function Navbar() {
                                 </nav>
 
                                 {/* Additional Actions & Branding */}
-                                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-sumi/10 pt-8 mt-12 w-full text-center md:text-left">
+                                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-sumi/10 pt-8 mt-4 w-full text-center md:text-left">
                                     <motion.div
                                         initial={{ opacity: 0, y: -20 }}
                                         animate={{ opacity: 1, y: 0 }}
@@ -234,7 +243,7 @@ export default function Navbar() {
                                         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
                                         className="space-y-4 flex flex-col items-center md:items-start"
                                     >
-                                        <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/40 font-medium">
+                                        <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/44 font-medium">
                                             Custom Celebrations
                                         </span>
                                         <Link
