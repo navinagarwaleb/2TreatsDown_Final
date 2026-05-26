@@ -58,6 +58,9 @@ export default function Footer() {
                         <Link href="/shop" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
                             Shop
                         </Link>
+                        <Link href="/gallery" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
+                            Gallery
+                        </Link>
                         <Link href="/reviews" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
                             Reviews
                         </Link>

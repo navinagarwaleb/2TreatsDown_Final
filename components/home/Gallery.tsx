@@ -77,7 +77,7 @@ export default function Gallery() {
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
                 >
                     <Link
-                        href="/shop"
+                        href="/gallery"
                         className="group relative inline-flex overflow-hidden font-sans text-[12px] tracking-[0.16em] uppercase text-sumi/50 hover:text-sumi transition-colors duration-500 ease-text-roll"
                     >
                         <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-full">
