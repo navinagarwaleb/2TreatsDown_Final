@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, Instagram, Facebook } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCartStore } from "@/store/useCartStore";
 
@@ -212,9 +212,9 @@ export default function Navbar() {
                                                 <Link
                                                     href={link.href}
                                                     onClick={link.href === "/" ? handleHomeClick : undefined}
-                                                    className={`group relative inline-block font-heading text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.08] tracking-[0.005em] transition-colors duration-300 ${
+                                                    className={`group relative inline-block font-heading text-[clamp(1.8rem,4.5vw,3.2rem)] leading-[1.1] tracking-[0.005em] transition-colors duration-300 `+(
                                                         pathname === link.href ? "text-sumi" : "text-sumi/45 hover:text-sumi"
-                                                    }`}
+                                                    )}
                                                 >
                                                     <span className="relative inline-block overflow-hidden pb-[0.12em]">
                                                         <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[110%]">
@@ -242,39 +242,36 @@ export default function Navbar() {
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: 0 }}
                                     transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: isOpen ? 0.5 + 0.06 * navLinks.length + 0.08 : 0 }}
+                                    className="flex flex-col items-center gap-5 text-center"
                                 >
-                                    <div aria-hidden="true" className="h-px w-10 mx-auto bg-sumi/15 mb-8" />
-                                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 text-center md:text-left">
-                                        <div className="space-y-4 flex flex-col items-center md:items-start">
-                                            <span className="block font-sans text-xs tracking-[0.2em] uppercase text-sumi/40 font-medium">
-                                                Custom Celebrations
-                                            </span>
-                                            <Link
-                                                href="/custom-cake"
-                                                className="group relative inline-flex items-center justify-center font-sans text-[12px] tracking-[0.16em] uppercase text-sumi border border-sumi/25 px-6 py-3 transition-[color,border-color] duration-500 ease-text-roll hover:text-washi hover:border-sumi"
-                                            >
-                                                <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-                                                    <span className="absolute inset-y-0 -inset-x-px bg-sumi origin-bottom scale-y-0 transition-transform duration-500 ease-text-roll group-hover:scale-y-100" />
-                                                </span>
-                                                <span className="relative inline-flex overflow-hidden">
-                                                    <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-[140%]">
-                                                        Request Custom Cake
-                                                    </span>
-                                                    <span aria-hidden="true" className="absolute inset-0 flex items-center justify-center translate-y-[140%] transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
-                                                        Request Custom Cake
-                                                    </span>
-                                                </span>
-                                            </Link>
-                                        </div>
+                                    <div aria-hidden="true" className="h-px w-10 bg-sumi/15" />
 
-                                        <div className="text-center md:text-right">
-                                            <p className="font-heading italic text-lg text-sumi/60">
-                                                Quiet indulgence, deliberately crafted.
-                                            </p>
-                                            <span className="block font-sans text-[10px] tracking-[0.16em] uppercase text-sumi/45 mt-2">
-                                                Est. 2022 / Kanata, ON
-                                            </span>
-                                        </div>
+                                    <p className="font-heading italic text-base text-sumi/60">
+                                        Quiet indulgence, deliberately crafted.
+                                    </p>
+                                    <span className="block font-sans text-[10px] tracking-[0.16em] uppercase text-sumi/45 -mt-3">
+                                        Est. 2022 / Kanata, ON
+                                    </span>
+
+                                    <div className="flex items-center gap-6">
+                                        <a
+                                            href="https://www.instagram.com/2treatsdown/"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label="2 Treats Down on Instagram"
+                                            className="inline-block text-sumi/45 hover:text-sumi transition-colors duration-300"
+                                        >
+                                            <Instagram className="w-5 h-5" strokeWidth={1.5} />
+                                        </a>
+                                        <a
+                                            href="https://www.facebook.com/people/2-Treats-Down/100083028921987/?sk=about"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label="2 Treats Down on Facebook"
+                                            className="inline-block text-sumi/45 hover:text-sumi transition-colors duration-300"
+                                        >
+                                            <Facebook className="w-5 h-5" strokeWidth={1.5} />
+                                        </a>
                                     </div>
                                 </motion.div>
 
