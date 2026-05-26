@@ -5,15 +5,29 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useCartStore } from "@/store/useCartStore";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, X } from "lucide-react";
+import { sendOrderNotificationEmail } from "@/app/actions/checkout";
 
 export default function CheckoutSuccessHandler() {
     const searchParams = useSearchParams();
     const router = useRouter();
     const clearCart = useCartStore((state) => state.clearCart);
     const [showSuccess, setShowSuccess] = useState(false);
+    const [emailSent, setEmailSent] = useState(false);
 
     useEffect(() => {
-        if (searchParams?.get("checkout") === "success") {
+        if (searchParams?.get("checkout") === "success" && !emailSent) {
+            setEmailSent(true);
+            
+            const orderId = searchParams.get("orderId") || "";
+            const transactionId = searchParams.get("transactionId") || "";
+
+            // Trigger server action to retrieve order details and email the merchant
+            if (orderId || transactionId) {
+                sendOrderNotificationEmail(orderId, transactionId).catch((err) => {
+                    console.error("Failed to trigger order email notification:", err);
+                });
+            }
+
             clearCart();
             setShowSuccess(true);
             
@@ -21,7 +35,7 @@ export default function CheckoutSuccessHandler() {
             const newUrl = window.location.pathname;
             router.replace(newUrl);
         }
-    }, [searchParams, clearCart, router]);
+    }, [searchParams, clearCart, router, emailSent]);
 
     if (!showSuccess) return null;
 

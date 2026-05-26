@@ -7,6 +7,7 @@ export interface SquareProduct {
     descriptionHtml: string;
     imageUrl: string;
     imageUrls: string[];
+    prepTimeDays: number;
 }
 
 export async function getSquareProducts(): Promise<SquareProduct[]> {
@@ -95,15 +96,23 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
             } while (cursor);
         }
 
-        // Map all images by ID for quick lookup
+        // Map all images and selection choices by ID for quick lookup
         const images: Record<string, string> = {};
-        objects
-            .filter((obj: any) => obj.type === "IMAGE")
-            .forEach((imgObj: any) => {
-                if (imgObj.image_data && imgObj.image_data.url) {
-                    images[imgObj.id] = imgObj.image_data.url;
+        const selectionChoices: Record<string, string> = {};
+        objects.forEach((obj: any) => {
+            if (obj.type === "IMAGE") {
+                if (obj.image_data && obj.image_data.url) {
+                    images[obj.id] = obj.image_data.url;
                 }
-            });
+            } else if (obj.type === "CUSTOM_ATTRIBUTE_DEFINITION") {
+                const choices = obj.custom_attribute_definition_data?.allowed_selections || [];
+                choices.forEach((choice: any) => {
+                    if (choice.uid && choice.name) {
+                        selectionChoices[choice.uid] = choice.name;
+                    }
+                });
+            }
+        });
 
         // Map products and match with images
         const items: SquareProduct[] = objects
@@ -156,6 +165,37 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                 const description = data.description_plaintext || data.description || "Fresh from our bakery.";
                 const descriptionHtml = data.description_html || `<p>${description}</p>`;
 
+                // Extract Prep Time from Custom Catalog Attributes (Option B)
+                let prepTimeDays = 3; // Default fallback to 3 days
+                if (item.custom_attribute_values) {
+                    const attributeObj = Object.values(item.custom_attribute_values).find((attr: any) => {
+                        const attrName = attr.name?.toLowerCase() || "";
+                        const attrKey = attr.key?.toLowerCase() || "";
+                        return attrName.includes("prep time") || attrName.includes("lead time") || attrName.includes("prep_time") ||
+                               attrKey.includes("prep time") || attrKey.includes("lead time") || attrKey.includes("prep_time");
+                    }) as any;
+
+                    if (attributeObj) {
+                        let val = attributeObj.string_value || attributeObj.text_value || attributeObj.number_value;
+                        if (!val && attributeObj.selection_uid_values && attributeObj.selection_uid_values.length > 0) {
+                            const firstChoiceId = attributeObj.selection_uid_values[0];
+                            val = selectionChoices[firstChoiceId];
+                        }
+                        if (val) {
+                            const parsed = parseInt(val.toString().toLowerCase().trim());
+                            if (val.toString().toLowerCase().includes("week")) {
+                                prepTimeDays = (parsed || 1) * 7;
+                            } else if (val.toString().toLowerCase().includes("day")) {
+                                prepTimeDays = parsed || 3;
+                            } else if (val.toString().toLowerCase().includes("hour")) {
+                                prepTimeDays = Math.ceil((parsed || 48) / 24);
+                            } else {
+                                prepTimeDays = parsed || 3;
+                            }
+                        }
+                    }
+                }
+
                 return {
                     id: item.id,
                     title: data.name || "Unknown Item",
@@ -164,7 +204,8 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     price: priceString,
                     priceCents,
                     imageUrl,
-                    imageUrls
+                    imageUrls,
+                    prepTimeDays
                 };
             });
 
