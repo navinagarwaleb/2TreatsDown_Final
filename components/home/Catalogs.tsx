@@ -9,55 +9,55 @@ const catalogs = [
         title: "2025 Catalog (Cakes)",
         tabLabel: "Cakes '25",
         category: "2025 Collection",
-        headline: "Celebrating in style.",
-        description: "Our latest custom cakes catalog featuring bespoke designs, premium decorations, and sizing options for your dog's milestones.",
+        headline: "Celebrating life\u2019s sweetest moments.",
+        description: "Discover our custom cake collection featuring bespoke designs, premium decorations, and thoughtful details made for your dog\u2019s milestones and celebrations.",
         url: "https://www.canva.com/design/DAG6wEb1bMk/Zv3G4DUKVPZGIBWhgSjeWg/edit?utm_content=DAG6wEb1bMk&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "/images/catalogs/2025_Cakes.jpg"
+        img: "/images/catalogs/2025_Cakes.webp"
     },
     {
         title: "2025 Catalog (Pupcakes)",
         tabLabel: "Pupcakes '25",
         category: "2025 Collection",
-        headline: "Bite-sized indulgence.",
-        description: "Discover our 2025 selection of gourmet pupcakes, hand-crafted with organic ingredients and dog-safe frostings.",
+        headline: "Small treats for big celebrations.",
+        description: "Explore our 2025 pupcake collection featuring handcrafted designs, wholesome ingredients, and dog-friendly frosting.",
         url: "https://www.canva.com/design/DAG9k33Nzek/kVIXQbSWpCpUxBwauMFkng/view?utm_content=DAG9k33Nzek&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h5a1c91faca",
-        img: "/images/catalogs/2025_Pupcakes.jpg"
+        img: "/images/catalogs/2025_Pupcakes.webp"
     },
     {
         title: "2024 Catalog (Cakes)",
         tabLabel: "Cakes '24",
         category: "2024 Collection",
-        headline: "Time-tested recipes.",
-        description: "Browse our 2024 custom cake creations, detailing the recipes and frosting styles that made celebrations memorable.",
+        headline: "From birthdays to gotcha days.",
+        description: "Our 2024 cake collection showcases custom creations and signature styles that made celebrations extra special.",
         url: "https://www.canva.com/design/DAG_ndBx-uI/TnWpOzgda36Hl-2GvReFaQ/edit?utm_content=DAG_ndBx-uI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "/images/catalogs/2024_Cakes.jpg"
+        img: "/images/catalogs/2024_Cakes.webp"
     },
     {
         title: "2024 Catalog (Pupcakes)",
         tabLabel: "Pupcakes '24",
         category: "2024 Collection",
-        headline: "A year of treats.",
-        description: "A retrospective of our popular 2024 pupcakes, detailing sizing, recipes, and seasonal variations.",
+        headline: "Colourful swirls, happy tails, and lots of celebration.",
+        description: "A look back at some of our favourite pupcake creations from 2024.",
         url: "https://www.canva.com/design/DAG_nQAxsjc/rzc4kgH7WhIjbOidR7xgJQ/edit?utm_content=DAG_nQAxsjc&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "/images/catalogs/2024_Pupcakes.jpg"
+        img: "/images/catalogs/2024_Pupcakes.webp"
     },
     {
         title: "2023 Catalog (Cakes)",
         tabLabel: "Cakes '23",
         category: "2023 Collection",
-        headline: "How we began.",
-        description: "Explore the cake catalog that launched 2 Treats Down. Grounded in simplicity, taste, and premium quality ingredients.",
+        headline: "Where the celebrations began.",
+        description: "Explore our 2023 cake collection featuring some of our earliest custom creations, handcrafted for unforgettable pup celebrations.",
         url: "https://www.canva.com/design/DAG-28nHZ2g/2l-JjASiQFj3VNoRoU0gtg/view?utm_content=DAG-28nHZ2g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h0e1b2074d1",
-        img: "/images/catalogs/2023_Cakes.jpg"
+        img: "/images/catalogs/2023_Cakes.webp"
     },
     {
         title: "2023 Catalog (Pupcakes)",
         tabLabel: "Pupcakes '23",
         category: "2023 Collection",
-        headline: "Simple & wholesome.",
-        description: "Our original pupcake catalog from 2023. Preservative-free, healthy treats that helped build our amazing Ottawa community.",
+        headline: "The early days of pupcake decorating.",
+        description: "Browse some of our first playful designs and sweet little celebrations from 2023.",
         url: "https://www.canva.com/design/DAG-3dNxQ8A/nnr-ulZez2D4ZyClc8ORWA/edit?utm_content=DAG-3dNxQ8A&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
-        img: "/images/catalogs/2023_Pupcakes.jpg"
+        img: "/images/catalogs/2023_Pupcakes.webp"
     },
 ];
 
