@@ -13,7 +13,7 @@ const blogPosts = [
         excerpt:
             "Our newest flavour combination has been a hit at the farmers' market. Made with real peanut butter, ripe bananas, and oat flour — these pupcakes are fluffy, fragrant, and got four paws up from Piper himself.",
         body: "After weeks of testing in our Kanata kitchen, we're thrilled to introduce our Peanut Butter & Banana Pupcakes — a flavour combination that Piper simply couldn't get enough of during trials (and trust us, he's a tough critic).\n\nThese pupcakes are baked with human-grade ingredients: creamy peanut butter (no xylitol, of course), mashed ripe bananas for natural sweetness, oat flour for a gentle digestible base, and a touch of cinnamon for warmth. No preservatives, no fillers — just real food that happens to look like a treat.\n\nEach pupcake is hand-frosted with a yogurt-based topping and finished with a single freeze-dried banana chip. They're perfect for birthdays, gotcha days, or just because your pup deserves something special.\n\nYou can find them at the Carp Farmers' Market every Saturday, or order online for local pickup in Kanata.",
-        image: "/images/blog/pupcakes.jpg",
+        image: "/images/blog/pupcakes.webp",
         tags: ["New Products", "Recipes", "Pupcakes"],
     },
     {
@@ -24,7 +24,7 @@ const blogPosts = [
         excerpt:
             "Ever wondered what goes into our treats beyond the ingredient list? We're sharing our sourcing philosophy and why local ingredients make a real difference — for your pup and our community.",
         body: "At 2 Treats Down, we believe that great treats start with great ingredients — and great ingredients come from people who care as much as we do.\n\nWhenever possible, we source our ingredients from local farms and suppliers here in Eastern Ontario. That means our oats come from a family-run mill in the Ottawa Valley, our peanut butter is made by a small batch producer just outside of town, and our eggs (yes, we use eggs in some recipes!) come from free-range hens at a farm in Carp.\n\nWhy does this matter for your dog? Fresher ingredients mean higher nutritional value, better flavour, and fewer preservatives. Ingredients that travel shorter distances arrive at our kitchen closer to their natural state — and your pup gets to taste that difference.\n\nIt also means we can trace every batch back to its source. When a customer asks what's in a treat, we don't just read the label — we can tell you which farm the oats came from and when they were harvested.\n\nAnd of course, it strengthens our local food community. Small businesses supporting small businesses — that's how a community grows.\n\nNext time you pick up a bag of our treats, know that every ingredient carries a story. And every bite supports something bigger than just one bakery.",
-        image: "/images/blog/local-sourcing.jpg",
+        image: "/images/blog/local-sourcing.webp",
         tags: ["Behind the Scenes", "Ingredients", "Community"],
     },
 ];
