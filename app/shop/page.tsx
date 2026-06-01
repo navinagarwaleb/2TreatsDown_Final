@@ -10,7 +10,7 @@ export default async function Shop() {
     const treats = await getSquareProducts();
 
     return (
-        <div className="container mx-auto px-4 max-w-7xl py-16">
+        <div className="container mx-auto px-4 max-w-7xl pt-32 pb-16 md:pt-48">
             <Suspense fallback={null}>
                 <CheckoutSuccessHandler />
             </Suspense>

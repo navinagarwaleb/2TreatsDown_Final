@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { WordSlideUp } from "@/components/ui/ScrollReveal";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const images = [
     {
@@ -43,57 +44,104 @@ const images = [
     },
 ];
 
+// Custom smooth scroll with easing — no browser jank
+function smoothScrollTo(el: HTMLElement, targetLeft: number, duration: number = 600) {
+    const startLeft = el.scrollLeft;
+    const distance = targetLeft - startLeft;
+    const startTime = performance.now();
+
+    function easeOutCubic(t: number): number {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function step(currentTime: number) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        el.scrollLeft = startLeft + distance * easeOutCubic(progress);
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
 export default function Gallery() {
+    const scrollRef = useRef<HTMLDivElement>(null);
+    const [canScrollLeft, setCanScrollLeft] = useState(false);
+    const [canScrollRight, setCanScrollRight] = useState(true);
+
+    const checkScroll = useCallback(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        setCanScrollLeft(el.scrollLeft > 2);
+        setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 2);
+    }, []);
+
+    useEffect(() => {
+        checkScroll();
+        window.addEventListener("resize", checkScroll);
+        return () => window.removeEventListener("resize", checkScroll);
+    }, [checkScroll]);
+
+    const doScroll = (dir: "left" | "right") => {
+        const el = scrollRef.current;
+        if (!el) return;
+        const amount = dir === "left" ? -340 : 340;
+        const target = Math.max(0, Math.min(el.scrollLeft + amount, el.scrollWidth - el.clientWidth));
+        smoothScrollTo(el, target, 600);
+    };
+
     return (
         <section className="bg-surface py-24 md:py-32 border-b border-sumi/10 space-section">
-            {/* Header row: left title + right "View all" link — same baseline row */}
-            <div className="px-6 md:px-12 lg:px-20 xl:px-28 flex items-baseline justify-between gap-6 mb-10 md:mb-14">
-                <motion.h2
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                    className="font-heading text-[clamp(1.75rem,3.6vw,2.75rem)] leading-[1.1] tracking-[0.005em] text-sumi font-bold"
-                >
+            {/* Header row */}
+            <div className="px-6 md:px-12 lg:px-20 xl:px-28 flex items-center justify-between gap-4 mb-10 md:mb-14">
+                <h2 className="font-heading text-[clamp(1.75rem,3.6vw,2.75rem)] leading-[1.1] tracking-[0.005em] text-sumi font-bold">
                     Cakes Gallery.
-                </motion.h2>
+                </h2>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
-                >
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={() => doScroll("left")}
+                        disabled={!canScrollLeft}
+                        className="w-10 h-10 rounded-full border border-sumi/15 flex items-center justify-center text-sumi/50 hover:text-sumi hover:border-sumi/40 transition-all cursor-pointer disabled:opacity-25 disabled:cursor-default"
+                        aria-label="Scroll left"
+                    >
+                        <ChevronLeft className="w-5 h-5" />
+                    </button>
+                    <button
+                        onClick={() => doScroll("right")}
+                        disabled={!canScrollRight}
+                        className="w-10 h-10 rounded-full border border-sumi/15 flex items-center justify-center text-sumi/50 hover:text-sumi hover:border-sumi/40 transition-all cursor-pointer disabled:opacity-25 disabled:cursor-default"
+                        aria-label="Scroll right"
+                    >
+                        <ChevronRight className="w-5 h-5" />
+                    </button>
+
                     <Link
                         href="/gallery"
-                        className="group relative inline-flex overflow-hidden font-sans text-[12px] tracking-[0.16em] uppercase text-sumi/50 hover:text-sumi transition-colors duration-500 ease-text-roll"
+                        className="font-sans text-[12px] tracking-[0.16em] uppercase text-sumi/50 hover:text-sumi transition-colors duration-300"
                     >
-                        <span className="block transition-transform duration-500 ease-text-roll group-hover:-translate-y-full">
-                            View all
-                        </span>
-                        <span aria-hidden="true" className="absolute inset-0 translate-y-full transition-transform duration-500 ease-text-roll group-hover:translate-y-0">
-                            View all
-                        </span>
+                        View all
                     </Link>
-                </motion.div>
+                </div>
             </div>
 
-            {/* Horizontal scrolling card row — full bleed with screen-edge padding, no max-w */}
-            <div className="flex gap-5 md:gap-6 lg:gap-8 overflow-x-auto pb-4 px-6 md:px-12 lg:px-20 xl:px-28 scrollbar-hide">
+            {/* Scrollable card row — pure overflow, no snap, no CSS smooth */}
+            <div
+                ref={scrollRef}
+                onScroll={checkScroll}
+                className="flex gap-5 md:gap-6 lg:gap-8 overflow-x-auto pb-4 px-6 md:px-12 lg:px-20 xl:px-28 scrollbar-hide"
+            >
                 {images.map((item, idx) => (
                     <motion.div
                         key={idx}
-                        initial={{ opacity: 0, x: 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{
-                            duration: 1.2,
-                            ease: [0.16, 1, 0.3, 1],
-                            delay: idx * 0.06,
-                        }}
+                        transition={{ duration: 0.6, delay: idx * 0.06 }}
                         className="flex-shrink-0 w-[260px] md:w-[280px] lg:w-[300px]"
                     >
-                        {/* Image card */}
                         <div className="group block">
                             <div className="aspect-[4/5] overflow-hidden rounded-md relative bg-brand-pink/30">
                                 <img

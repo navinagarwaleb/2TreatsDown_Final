@@ -7,18 +7,21 @@ import { WordSlideUp } from "@/components/ui/ScrollReveal";
 const reviews = [
     {
         id: 1,
-        author: "Sarah & Buster",
-        text: "Ordered a birthday cake for Buster and it was perfect! The custom design was exactly what we wanted, and he devoured it. Highly recommend for any dog owner.",
+        author: "Emily Mintha",
+        date: "June 16, 2023",
+        text: "100% recommend! The cake I ordered for my great dane, Honey, was absolutely amazing. I can’t get over how beautiful it was- I almost felt bad watching my dog devour it Thanks again!!!",
     },
     {
         id: 2,
-        author: "Mike T.",
-        text: "The sweet potato chews are incredible. My dog has heavy allergies and these are the only treats that don't upset his stomach. Customer service is also top-notch.",
+        author: "Norma Newcombe",
+        date: "June 16, 2023",
+        text: "We had a beautiful cake made for my 13 year old doodle. It was a big hit with his sister and cousin. Not going to lie, I almost took a bite myself\nThe PB treats are also loved around here!\nOrdering and payment was easy, and the option to pay for delivery was perfect for us.",
     },
     {
         id: 3,
-        author: "Emily R.",
-        text: "We got a set of pupcakes for our Golden's gotcha day party. Everyone loved them! They looked beautiful and smelled like real human food.",
+        author: "Amanda Ing",
+        date: "April 12, 2024",
+        text: "We ordered a cake from 2 Treats Down for my dog's birthday and she absolutely loved it! I gave my concept to Akshata and she was able to execute the custom design to perfection. I'd recommend her cakes for anyone looking to spoil their furry friends with an extra special treat!",
     },
 ];
 
@@ -52,6 +55,7 @@ export default function Testimonials() {
                             </p>
                             <div className="mt-auto pt-6 border-t border-brand-pink/30 flex flex-col">
                                 <span className="font-bold text-sumi text-lg">{review.author}</span>
+                                <span className="text-xs text-sumi/50 mt-1">{review.date}</span>
                             </div>
                         </motion.div>
                     ))}

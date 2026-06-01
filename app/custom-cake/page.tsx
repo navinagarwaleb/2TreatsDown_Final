@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function CustomCakePage() {
     return (
-        <div className="container mx-auto px-4 max-w-7xl py-16 md:py-24">
+        <div className="container mx-auto px-4 max-w-7xl pt-32 pb-16 md:pt-48 md:pb-24">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                 <motion.div
                     initial={{ opacity: 0, x: -30 }}

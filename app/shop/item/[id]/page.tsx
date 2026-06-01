@@ -16,10 +16,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
     }
 
     return (
-        <div className="container mx-auto px-4 max-w-7xl py-12 md:py-24 animate-in fade-in duration-500">
+        <div className="container mx-auto px-4 max-w-7xl pt-32 pb-12 md:pt-48 md:pb-24 animate-in fade-in duration-500">
             <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-brand-dark/60 hover:text-brand-orange transition-colors mb-8 font-medium"
+                className="inline-flex items-center gap-2 text-brand-dark/60 hover:text-brand-orange transition-colors mb-8 font-medium relative z-10"
             >
                 <ArrowLeft className="w-4 h-4" /> Back to shop
             </Link>
