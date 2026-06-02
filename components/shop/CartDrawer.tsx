@@ -19,6 +19,7 @@ export default function CartDrawer() {
     // Prevent hydration errors with zustand persist
     useEffect(() => {
         setIsMounted(true);
+        setPickupDate(getMinDateString());
     }, []);
 
     // Calculate maximum prep time required by items currently in the cart
@@ -37,10 +38,9 @@ export default function CartDrawer() {
 
     // Auto-reset or adjust date selection if it violates minimum prep time (e.g. after cart item additions)
     useEffect(() => {
-        if (!pickupDate) return;
         const minDateStr = getMinDateString();
-        if (pickupDate < minDateStr) {
-            setPickupDate("");
+        if (!pickupDate || pickupDate < minDateStr) {
+            setPickupDate(minDateStr);
             setPickupTime("");
         }
     }, [maxPrepDays, pickupDate]);
@@ -217,7 +217,7 @@ export default function CartDrawer() {
                                     </p>
 
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        <div className="flex flex-col gap-1 text-left">
+                                        <div className="flex flex-col gap-1 text-left w-full min-w-0">
                                             <label className="text-[10px] font-bold text-brand-dark/60 uppercase tracking-wider pl-1">Date</label>
                                             <input
                                                 type="date"
@@ -225,17 +225,17 @@ export default function CartDrawer() {
                                                 value={pickupDate}
                                                 onChange={handleDateChange}
                                                 required
-                                                className="w-full min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer"
+                                                className="block w-full max-w-full box-border min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer"
                                             />
                                         </div>
-                                        <div className="flex flex-col gap-1 text-left">
+                                        <div className="flex flex-col gap-1 text-left w-full min-w-0">
                                             <label className="text-[10px] font-bold text-brand-dark/60 uppercase tracking-wider pl-1">Time</label>
                                             <select
                                                 value={pickupTime}
                                                 onChange={(e) => setPickupTime(e.target.value)}
                                                 disabled={!pickupDate}
                                                 required
-                                                className="w-full min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                                className="block w-full max-w-full box-border min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
                                                 <option value="">Select Time</option>
                                                 {getTimeSlots(pickupDate).map((slot) => (
