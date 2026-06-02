@@ -225,7 +225,7 @@ export default function CartDrawer() {
                                                 value={pickupDate}
                                                 onChange={handleDateChange}
                                                 required
-                                                className="w-full text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer"
+                                                className="w-full min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer"
                                             />
                                         </div>
                                         <div className="flex flex-col gap-1 text-left">
@@ -235,7 +235,7 @@ export default function CartDrawer() {
                                                 onChange={(e) => setPickupTime(e.target.value)}
                                                 disabled={!pickupDate}
                                                 required
-                                                className="w-full text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                                                className="w-full min-w-0 text-xs p-2.5 bg-brand-main border border-brand-pink rounded-xl outline-none focus:border-brand-brown transition-colors text-brand-dark cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
                                                 <option value="">Select Time</option>
                                                 {getTimeSlots(pickupDate).map((slot) => (
