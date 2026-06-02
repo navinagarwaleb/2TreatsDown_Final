@@ -216,7 +216,7 @@ export default function CartDrawer() {
                                         Requires <strong className="text-brand-brown">{maxPrepDays}-day</strong> lead time.
                                     </p>
 
-                                    <div className="grid grid-cols-2 gap-3">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                         <div className="flex flex-col gap-1 text-left">
                                             <label className="text-[10px] font-bold text-brand-dark/60 uppercase tracking-wider pl-1">Date</label>
                                             <input
