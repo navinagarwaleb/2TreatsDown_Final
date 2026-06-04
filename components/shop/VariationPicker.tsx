@@ -30,11 +30,11 @@ export default function VariationPicker({ product, selectedVariationId, onSelect
                     <button
                         key={v.id}
                         onClick={() => onSelect?.(v.id, v.name, v.priceCents)}
-                        className={\`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 border-2 \${
+                        className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 border-2 ${
                             currentId === v.id
                                 ? "bg-brand-orange text-white border-brand-orange shadow-md"
                                 : "bg-white text-brand-dark border-brand-pink/50 hover:border-brand-orange hover:text-brand-orange"
-                        }\`}
+                        }`}
                     >
                         {v.name} - {v.price}
                     </button>
