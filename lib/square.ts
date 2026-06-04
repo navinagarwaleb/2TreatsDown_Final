@@ -1,3 +1,10 @@
+export interface SquareVariation {
+    id: string;
+    name: string;
+    price: string;
+    priceCents: number;
+}
+
 export interface SquareProduct {
     id: string;
     title: string;
@@ -8,6 +15,7 @@ export interface SquareProduct {
     imageUrl: string;
     imageUrls: string[];
     prepTimeDays: number;
+    variations: SquareVariation[];
 }
 
 export async function getSquareProducts(): Promise<SquareProduct[]> {
@@ -135,14 +143,26 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
             .map((item: any) => {
                 const data = item.item_data;
 
-                // Extract Price (Cent manipulation)
+                // Extract Variations & Price
                 let priceString = "Contact for Price";
                 let priceCents = 0;
+                const variations: SquareVariation[] = [];
+
                 if (data.variations && data.variations.length > 0) {
-                    const priceMoney = data.variations[0].item_variation_data?.price_money;
-                    if (priceMoney && priceMoney.amount !== undefined) {
-                        priceCents = priceMoney.amount;
-                        priceString = `$${(priceMoney.amount / 100).toFixed(2)}`;
+                    data.variations.forEach((variation: any) => {
+                        const vdata = variation.item_variation_data;
+                        if (vdata && vdata.price_money) {
+                            variations.push({
+                                id: variation.id,
+                                name: vdata.name || "Default",
+                                price: `$${(vdata.price_money.amount / 100).toFixed(2)}`,
+                                priceCents: vdata.price_money.amount,
+                            });
+                        }
+                    });
+                    if (variations.length > 0) {
+                        priceCents = variations[0].priceCents;
+                        priceString = variations[0].price;
                     }
                 }
 
@@ -205,7 +225,8 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     priceCents,
                     imageUrl,
                     imageUrls,
-                    prepTimeDays
+                    prepTimeDays,
+                    variations
                 };
             });
 
