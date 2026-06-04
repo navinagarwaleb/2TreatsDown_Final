@@ -12,7 +12,7 @@ export interface CartItem {
 interface CartStore {
     items: CartItem[];
     isOpen: boolean;
-    addItem: (product: SquareProduct, quantity?: number) => void;
+    addItem: (product: SquareProduct, quantity?: number, variationId?: string, variationName?: string) => void;
     removeItem: (productId: string) => void;
     updateQuantity: (productId: string, quantity: number) => void;
     clearCart: () => void;
