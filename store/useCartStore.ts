@@ -4,6 +4,8 @@ import { SquareProduct } from "@/lib/square";
 
 export interface CartItem {
     product: SquareProduct;
+    variationId: string | null;
+    variationName: string | null;
     quantity: number;
 }
 
@@ -25,19 +27,25 @@ export const useCartStore = create<CartStore>()(
         (set, get) => ({
             items: [],
             isOpen: false,
-            addItem: (product, quantity = 1) => {
+            addItem: (product, quantity = 1, variationId?: string, variationName?: string) => {
                 set((state) => {
-                    const existingItem = state.items.find((i) => i.product.id === product.id);
+                    const itemKey = variationId ? `${product.id}-${variationId}` : product.id;
+                    const existingItem = state.items.find((i) => {
+                        const key = i.variationId ? `${i.product.id}-${i.variationId}` : i.product.id;
+                        return key === itemKey;
+                    });
                     if (existingItem) {
                         return {
-                            items: state.items.map((i) =>
-                                i.product.id === product.id
+                            items: state.items.map((i) => {
+                                const key = i.variationId ? `${i.product.id}-${i.variationId}` : i.product.id;
+                                return key === itemKey
                                     ? { ...i, quantity: i.quantity + quantity }
                                     : i
-                            ),
+                            }),
                         };
                     }
-                    return { items: [...state.items, { product, quantity }] };
+                    const newItem: CartItem = { product, variationId: variationId || null, variationName: variationName || null, quantity };
+                    return { items: [...state.items, newItem] };
                 });
                 get().openCart();
             },
@@ -57,7 +65,12 @@ export const useCartStore = create<CartStore>()(
             closeCart: () => set({ isOpen: false }),
             getCartTotalCents: () => {
                 return get().items.reduce(
-                    (total, item) => total + item.product.priceCents * item.quantity,
+                    (total, item) => {
+                        const vPrice = item.variationId && item.product.variations
+                            ? item.product.variations.find(v => v.id === item.variationId)?.priceCents ?? item.product.priceCents
+                            : item.product.priceCents;
+                        return total + vPrice * item.quantity;
+                    },
                     0
                 );
             },
