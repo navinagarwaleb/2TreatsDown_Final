@@ -154,47 +154,58 @@ export default function CartDrawer() {
                                     </button>
                                 </div>
                             ) : (
-                                items.map((item) => (
-                                    <div key={item.product.id} className="flex gap-4 p-4 bg-white rounded-2xl border border-brand-pink shadow-sm">
-                                        <div className="w-20 h-20 rounded-xl overflow-hidden bg-brand-pink shrink-0">
-                                            <img
-                                                src={item.product.imageUrl}
-                                                alt={item.product.title}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                        <div className="flex-1 flex flex-col">
-                                            <div className="flex justify-between items-start gap-2">
-                                                <h4 className="font-bold text-brand-dark leading-tight">{item.product.title}</h4>
-                                                <button
-                                                    onClick={() => removeItem(item.product.id)}
-                                                    className="pt-1 text-brand-orange hover:text-brand-brown transition-colors"
-                                                >
-                                                    <X className="w-4 h-4" />
-                                                </button>
+                                items.map((item) => {
+                                    const itemPriceCents = item.variationId
+                                        ? item.product.variations.find(v => v.id === item.variationId)?.priceCents ?? item.product.priceCents
+                                        : item.product.priceCents;
+                                    const itemPrice = `$${(itemPriceCents / 100).toFixed(2)}`;
+                                    return (
+                                        <div key={`${item.product.id}::${item.variationId || ""}`} className="flex gap-4 p-4 bg-white rounded-2xl border border-brand-pink shadow-sm">
+                                            <div className="w-20 h-20 rounded-xl overflow-hidden bg-brand-pink shrink-0">
+                                                <img
+                                                    src={item.product.imageUrl}
+                                                    alt={item.product.title}
+                                                    className="w-full h-full object-cover"
+                                                />
                                             </div>
-                                            <p className="text-brand-dark/70 text-sm mt-1">{item.product.price}</p>
+                                            <div className="flex-1 flex flex-col">
+                                                <div className="flex justify-between items-start gap-2">
+                                                    <div>
+                                                        <h4 className="font-bold text-brand-dark leading-tight">{item.product.title}</h4>
+                                                        {item.variationName && (
+                                                            <p className="text-brand-dark/50 text-xs mt-0.5">{item.variationName}</p>
+                                                        )}
+                                                    </div>
+                                                    <button
+                                                        onClick={() => removeItem(item.product.id, item.variationId)}
+                                                        className="pt-1 text-brand-orange hover:text-brand-brown transition-colors"
+                                                    >
+                                                        <X className="w-4 h-4" />
+                                                    </button>
+                                                </div>
+                                                <p className="text-brand-dark/70 text-sm mt-1">{itemPrice}</p>
 
-                                            <div className="mt-auto flex items-center gap-4 pt-4">
-                                                <div className="flex items-center gap-3 bg-brand-main rounded-full px-3 py-1 border border-brand-pink">
-                                                    <button
-                                                        onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                                                        className="text-brand-dark/50 hover:text-brand-orange transition-colors"
-                                                    >
-                                                        <Minus className="w-4 h-4" />
-                                                    </button>
-                                                    <span className="font-semibold text-sm w-4 text-center">{item.quantity}</span>
-                                                    <button
-                                                        onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                                                        className="text-brand-dark/50 hover:text-brand-orange transition-colors"
-                                                    >
-                                                        <Plus className="w-4 h-4" />
-                                                    </button>
+                                                <div className="mt-auto flex items-center gap-4 pt-4">
+                                                    <div className="flex items-center gap-3 bg-brand-main rounded-full px-3 py-1 border border-brand-pink">
+                                                        <button
+                                                            onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.variationId)}
+                                                            className="text-brand-dark/50 hover:text-brand-orange transition-colors"
+                                                        >
+                                                            <Minus className="w-4 h-4" />
+                                                        </button>
+                                                        <span className="font-semibold text-sm w-4 text-center">{item.quantity}</span>
+                                                        <button
+                                                            onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.variationId)}
+                                                            className="text-brand-dark/50 hover:text-brand-orange transition-colors"
+                                                        >
+                                                            <Plus className="w-4 h-4" />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ))
+                                    );
+                                })
                             )}
                         </div>
 
@@ -210,9 +221,9 @@ export default function CartDrawer() {
                                             Kanata Location Only
                                         </span>
                                     </div>
-                                    
+
                                     <p className="text-[11px] text-brand-dark/70 mb-3 leading-relaxed">
-                                        Hours: Mon–Fri 2pm–7pm | Sat–Sun 10am–5pm. 
+                                        Hours: Mon–Fri 2pm–7pm | Sat–Sun 10am–5pm.
                                         Requires <strong className="text-brand-brown">{maxPrepDays}-day</strong> lead time.
                                     </p>
 

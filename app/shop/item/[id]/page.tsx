@@ -1,6 +1,6 @@
 import { getSquareProduct } from "@/lib/square";
 import { notFound } from "next/navigation";
-import AddToCartButton from "@/components/shop/AddToCartButton";
+import ProductActions from "@/components/shop/ProductActions";
 import ProductGallery from "@/components/shop/ProductGallery";
 import Link from "next/link";
 import { ArrowLeft, PawPrint } from "lucide-react";
@@ -51,16 +51,9 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         ) : (
                             <p className="italic opacity-80">Fresh out the oven and completely delicious. Perfect for rewarding your best friend!</p>
                         )}
-
-                        {/* We removed the hardcoded list because your Square description now handles it fully! */}
                     </div>
 
-                    <div className="pt-4 border-t border-brand-pink">
-                        <AddToCartButton product={product} />
-                        <p className="text-center text-sm text-brand-dark/50 mt-4">
-                            Local Kanata Pickup Only &bull; Allow 48 hours for fresh baking
-                        </p>
-                    </div>
+                    <ProductActions product={product} />
                 </div>
             </div>
         </div>

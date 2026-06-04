@@ -69,11 +69,17 @@ export async function createCheckoutSession(items: CartItem[], pickupDateTime: s
 
         // Format line items for Square Checkout API
         const lineItems = items.map((item) => {
+            const price = item.variationId
+                ? item.product.variations.find(v => v.id === item.variationId)?.priceCents ?? item.product.priceCents
+                : item.product.priceCents;
+            const itemName = item.variationName
+                ? `${item.product.title} (${item.variationName})`
+                : item.product.title;
             return {
-                name: item.product.title,
+                name: itemName,
                 quantity: item.quantity.toString(),
                 base_price_money: {
-                    amount: item.product.priceCents,
+                    amount: price,
                     currency: "CAD",
                 },
             };
