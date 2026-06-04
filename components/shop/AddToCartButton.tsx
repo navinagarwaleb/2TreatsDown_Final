@@ -6,12 +6,18 @@ import { ShoppingBag, Check } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-export default function AddToCartButton({ product }: { product: SquareProduct }) {
+interface AddToCartButtonProps {
+    product: SquareProduct;
+    variationId?: string;
+    variationName?: string;
+}
+
+export default function AddToCartButton({ product, variationId, variationName }: AddToCartButtonProps) {
     const addItem = useCartStore((state) => state.addItem);
     const [added, setAdded] = useState(false);
 
     const handleAdd = () => {
-        addItem(product, 1);
+        addItem(product, 1, variationId, variationName);
         setAdded(true);
         setTimeout(() => setAdded(false), 2000);
     };
