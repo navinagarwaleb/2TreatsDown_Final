@@ -1,7 +1,9 @@
 import { getSquareProduct } from "@/lib/square";
 import { notFound } from "next/navigation";
 import AddToCartButton from "@/components/shop/AddToCartButton";
+import VariationPicker from "@/components/shop/VariationPicker";
 import ProductGallery from "@/components/shop/ProductGallery";
+import ProductActions from "@/components/shop/ProductActions";
 import Link from "next/link";
 import { ArrowLeft, PawPrint } from "lucide-react";
 
@@ -33,9 +35,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         <h1 className="text-4xl md:text-5xl font-heading font-bold text-brand-dark mb-4 leading-tight">
                             {product.title}
                         </h1>
-                        <p className="text-3xl font-bold font-sans text-brand-orange">
-                            {product.price}
-                        </p>
+                        <VariationPicker product={product} />
                     </div>
 
                     <div className="prose prose-lg text-brand-dark/80 bg-white p-8 rounded-3xl shadow-sm border border-brand-pink/50">
@@ -51,15 +51,10 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                         ) : (
                             <p className="italic opacity-80">Fresh out the oven and completely delicious. Perfect for rewarding your best friend!</p>
                         )}
-
-                        {/* We removed the hardcoded list because your Square description now handles it fully! */}
                     </div>
 
-                    <div className="pt-4 border-t border-brand-pink">
-                        <AddToCartButton product={product} />
-                        <p className="text-center text-sm text-brand-dark/50 mt-4">
-                            Local Kanata Pickup Only &bull; Allow 48 hours for fresh baking
-                        </p>
+                    <div>
+                        <ProductActions product={product} />
                     </div>
                 </div>
             </div>
