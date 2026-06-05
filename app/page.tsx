@@ -6,6 +6,7 @@ import Intro from "@/components/home/Intro";
 import Catalogs from "@/components/home/Catalogs";
 import Gallery from "@/components/home/Gallery";
 import { CharacterReveal } from "@/components/ui/ScrollReveal";
+import PetOfTheMonth from "@/components/home/PetOfTheMonth";
 
 export const dynamic = "force-dynamic";
 
@@ -63,10 +64,13 @@ export default async function Home() {
                         </div>
                     </section>
 
+                    <PetOfTheMonth />
+
                     <Testimonials />
                 </div>
             </main>
         </div>
     );
 }
+
 
