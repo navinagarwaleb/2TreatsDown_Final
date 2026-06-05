@@ -139,7 +139,7 @@ export default function PetOfTheMonth() {
                                 {[
                                     "Post your favorite photo or video of your pup.",
                                     "Tag @2treatsdown in the post.",
-                                    "Share goofy, hilarious, or cute moments of them enjoying our treats.",
+                                    "Share goofy, hilarious, or any cute moment of your pup.",
                                     "Add a funny or cute caption for bonus entries.",
                                     "Share to your story and tag us for extra entries.",
                                     "Tag 3 friends in the comments on our Instagram post to spread the word 🐾"
