@@ -148,7 +148,9 @@ Remy is also a professional model. He was trained to pose for the camera at just
 
 *"I'm so glad Remy came into my life. He is cute, he is funny, and he is the reason I am inspired to take photos. He's also helped me make so many wonderful friends in our neighborhood."*
 
-We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Stay tuned for July's Pet of the Month entries—keep sharing your cute pup photos and tagging @2treatsdown for a chance to be featured next! 🐾`,
+We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Stay tuned for July's Pet of the Month entries—keep sharing your cute pup photos and tagging @2treatsdown for a chance to be featured next! 🐾
+
+*Photo Credit: Special thanks to [Wiggle Reflection](https://www.instagram.com/wiggle_reflection/) for capturing these gorgeous professional photos of Remy! 📸*`,
         image: "/images/blog/remy-1.webp",
         imagePosition: "center 25%",
         tags: ["Pet of the Month", "Community", "Feature"],
@@ -159,7 +161,7 @@ We are so happy to feature Remy on our new website and socials this month, and h
         ],
         cta: {
             text: "Follow Remy on Instagram 📸",
-            href: "https://www.instagram.com/wiggle_reflection/",
+            href: "https://www.instagram.com/remy_spitz720/",
             external: true
         },
     },
@@ -168,6 +170,37 @@ We are so happy to feature Remy on our new website and socials this month, and h
 /* ─────────────────── Markdown Renderer ─────────────────── */
 
 function RenderBody({ body }: { body: string }) {
+    const renderTextWithLinks = (text: string) => {
+        const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+        const parts = [];
+        let lastIndex = 0;
+        let match;
+        
+        while ((match = regex.exec(text)) !== null) {
+            if (match.index > lastIndex) {
+                parts.push(text.substring(lastIndex, match.index));
+            }
+            parts.push(
+                <a
+                    key={match.index}
+                    href={match[2]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-brand-orange hover:underline font-semibold"
+                >
+                    {match[1]}
+                </a>
+            );
+            lastIndex = regex.lastIndex;
+        }
+        
+        if (lastIndex < text.length) {
+            parts.push(text.substring(lastIndex));
+        }
+        
+        return parts.length > 0 ? parts : text;
+    };
+
     return (
         <>
             {body.split("\n\n").map((block, index) => {
@@ -188,11 +221,12 @@ function RenderBody({ body }: { body: string }) {
                                 if (match) {
                                     return (
                                         <li key={lIdx}>
-                                            <strong className="text-brand-dark">{match[1]}</strong>{match[2]}
+                                            <strong className="text-brand-dark">{match[1]}</strong>
+                                            {renderTextWithLinks(match[2])}
                                         </li>
                                     );
                                 }
-                                return <li key={lIdx}>{cleanLine}</li>;
+                                return <li key={lIdx}>{renderTextWithLinks(cleanLine)}</li>;
                             })}
                         </ul>
                     );
@@ -207,11 +241,12 @@ function RenderBody({ body }: { body: string }) {
                                 if (match) {
                                     return (
                                         <li key={lIdx}>
-                                            <strong className="text-brand-dark">{match[1]}</strong>{match[2]}
+                                            <strong className="text-brand-dark">{match[1]}</strong>
+                                            {renderTextWithLinks(match[2])}
                                         </li>
                                     );
                                 }
-                                return <li key={lIdx}>{cleanLine}</li>;
+                                return <li key={lIdx}>{renderTextWithLinks(cleanLine)}</li>;
                             })}
                         </ol>
                     );
@@ -219,13 +254,13 @@ function RenderBody({ body }: { body: string }) {
                 if (block.startsWith("*") && block.endsWith("*") && !block.startsWith("**")) {
                     return (
                         <p key={index} className="leading-relaxed text-brand-dark/60 italic">
-                            {block.replace(/^\*|\*$/g, "")}
+                            {renderTextWithLinks(block.replace(/^\*|\*$/g, ""))}
                         </p>
                     );
                 }
                 return (
                     <p key={index} className="leading-relaxed text-brand-dark/80">
-                        {block}
+                        {renderTextWithLinks(block)}
                     </p>
                 );
             })}

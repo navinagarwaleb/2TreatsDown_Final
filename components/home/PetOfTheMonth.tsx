@@ -126,13 +126,13 @@ export default function PetOfTheMonth() {
                                 </Link>
 
                                 <a
-                                    href="https://www.instagram.com/wiggle_reflection/"
+                                    href="https://www.instagram.com/remy_spitz720/"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/60 hover:text-sumi border border-sumi/20 hover:border-sumi px-8 py-4.5 rounded-[4px] transition-all duration-300"
                                 >
                                     <Instagram className="w-4 h-4 text-rose-500" />
-                                    <span>Follow @wiggle_reflection</span>
+                                    <span>Follow @remy_spitz720</span>
                                 </a>
                             </div>
                         </motion.div>
