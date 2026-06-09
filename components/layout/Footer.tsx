@@ -70,6 +70,9 @@ export default function Footer() {
                         <Link href="/faq" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
                             FAQ
                         </Link>
+                        <Link href="/blog" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
+                            Blog
+                        </Link>
                         <Link href="/custom-cake" className="font-heading text-[20px] md:text-[22px] tracking-[0.01em] text-washi/80 hover:text-sumi transition-colors duration-300">
                             Custom Cake
                         </Link>
