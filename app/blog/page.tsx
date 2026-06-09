@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -238,6 +238,22 @@ function RenderBody({ body }: { body: string }) {
 export default function Blog() {
     const [activePostId, setActivePostId] = useState<number | null>(null);
     const articleRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const params = new URLSearchParams(window.location.search);
+            const slug = params.get("post");
+            if (slug) {
+                const found = blogPosts.find((p) => p.slug === slug);
+                if (found) {
+                    setActivePostId(found.id);
+                    setTimeout(() => {
+                        articleRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }, 300);
+                }
+            }
+        }
+    }, []);
 
     const postIndex = activePostId !== null ? blogPosts.findIndex((p) => p.id === activePostId) : -1;
     const post = postIndex !== -1 ? blogPosts[postIndex] : null;

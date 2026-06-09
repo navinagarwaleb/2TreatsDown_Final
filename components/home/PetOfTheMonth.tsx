@@ -116,7 +116,7 @@ export default function PetOfTheMonth() {
                             {/* Action Buttons */}
                             <div className="pt-4 flex flex-wrap gap-4 items-center">
                                 <Link
-                                    href="/blog"
+                                    href="/blog?post=june-pet-of-the-month-remy"
                                     className="group relative inline-flex items-center justify-center font-sans text-[11px] tracking-[0.16em] uppercase text-washi bg-sumi border border-sumi px-8 py-4.5 transition-[color,background-color] duration-500 ease-text-roll hover:text-sumi hover:bg-transparent rounded-[4px]"
                                 >
                                     <span className="relative inline-flex items-center gap-2">
