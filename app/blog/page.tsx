@@ -150,6 +150,7 @@ Remy is also a professional model. He was trained to pose for the camera at just
 
 We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Keep sharing your cute pup photos and tagging @2treatsdown—your dog could be our next Pet of the Month!`,
         image: "/images/blog/remy-1.webp",
+        imagePosition: "center 25%",
         tags: ["Pet of the Month", "Community", "Feature"],
         images: [
             "/images/blog/remy-2.webp",
