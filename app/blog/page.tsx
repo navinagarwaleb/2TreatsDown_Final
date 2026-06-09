@@ -119,6 +119,44 @@ That's it. That's the whole philosophy.`,
         image: "/images/gallery/5th.webp",
         tags: ["Ingredients", "Behind the Scenes", "Philosophy"],
     },
+    {
+        id: 3,
+        slug: "june-pet-of-the-month-remy",
+        title: "Introducing Our June Pet of the Month: Remy!",
+        date: "June 7, 2026",
+        author: "Akshata",
+        readTime: "2 min read",
+        excerpt: "Meet Remy, a beautiful 4-year-old Japanese Spitz and our very first Pet of the Month! Read about his favorite treats, funny begging habits, and picture-perfect smile.",
+        body: `Meet Remy, our very first **Pet of the Month**! Remy is a stunning 4-year-old Japanese Spitz who captured our hearts with his bright smile, goofy antics, and friendly neighborhood habits.
+
+To kick off our new monthly feature, we chatted with Remy's owner to learn all about this photogenic pup.
+
+### Remy's Profile
+
+* **Age:** 4 (born July 20, 2022)
+* **Breed:** Japanese Spitz
+* **Favourite Treats:** 2 Treats Down Chicken Jerky, or anything fishy (the stinkier, the better!)
+* **Favorite Weekend Activities:** Exploring local markets, visiting pet shops, and running around at the park.
+
+### His Goofy & Hilarious Habits
+
+Every dog has a special quirk, and Remy's neighborhood routine is absolutely adorable. When out for walks, he will literally go around the neighborhood begging to see his friends by lying flat down on their driveways. He refuses to budge until he gets to say hello!
+
+Remy is also a professional model. He was trained to pose for the camera at just 6 months old. Now, he instantly sits and smiles the moment a camera is pulled out. While he is happy to pose for other cameras too, he is also a pup of conviction—he will definitely let you know if he is not in the mood!
+
+### A Note from Remy's Owner
+
+*"I'm so glad Remy came into my life. He is cute, he is funny, and he is the reason I am inspired to take photos. He's also helped me make so many wonderful friends in our neighborhood."*
+
+We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Keep sharing your cute pup photos and tagging @2treatsdown—your dog could be our next Pet of the Month!`,
+        image: "/images/blog/remy-1.webp",
+        tags: ["Pet of the Month", "Community", "Feature"],
+        images: [
+            "/images/blog/remy-2.webp",
+            "/images/blog/remy-3.webp",
+            "/images/blog/remy-4.webp"
+        ],
+    },
 ];
 
 /* ─────────────────── Markdown Renderer ─────────────────── */
@@ -359,6 +397,25 @@ export default function Blog() {
                             <article className="prose prose-lg max-w-none space-y-5">
                                 <RenderBody body={post.body} />
                             </article>
+
+                            {/* Additional Gallery Images */}
+                            {post.images && post.images.length > 0 && (
+                                <div className="mt-12 pt-8 border-t border-brand-pink/20">
+                                    <h3 className="text-2xl font-bold font-heading text-brand-dark mb-6">More of Remy</h3>
+                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                                        {post.images.map((imgUrl, i) => (
+                                            <div key={i} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md group hover:shadow-lg transition-all duration-300">
+                                                <Image
+                                                    src={imgUrl}
+                                                    alt={`Remy photo ${i + 2}`}
+                                                    fill
+                                                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
 
                             {/* CTA */}
                             <div className="mt-14 pt-10 border-t border-brand-pink/30 flex justify-center">
