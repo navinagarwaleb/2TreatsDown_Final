@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Gift, Globe, Instagram, Sparkles, Calendar, Heart, Award } from "lucide-react";
+import { Sparkles, Calendar, Heart, Award, Instagram, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function PetOfTheMonth() {
     return (
@@ -24,7 +26,7 @@ export default function PetOfTheMonth() {
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sumi/5 border border-sumi/10 text-xs font-semibold uppercase tracking-wider text-sumi/70"
                     >
                         <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
-                        <span>Ongoing Monthly Feature</span>
+                        <span>June Pet of the Month</span>
                     </motion.div>
 
                     <motion.h2
@@ -34,7 +36,7 @@ export default function PetOfTheMonth() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-sumi tracking-tight"
                     >
-                        Pet of the Month
+                        Meet Our June Winner: Remy!
                     </motion.h2>
 
                     <motion.p
@@ -44,85 +46,39 @@ export default function PetOfTheMonth() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-base md:text-lg text-sumi/70 font-display leading-relaxed"
                     >
-                        Every month, one special pup will be chosen as our ✨ **Pet of the Month** ✨. We are SO excited to finally start this! 💛😄
+                        We are so excited to celebrate our very first Pet of the Month. Say hello to Remy, the photogenic Japanese Spitz! 🐾💛
                     </motion.p>
                 </div>
 
                 {/* Main Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16">
                     
-                    {/* Left Column: Winner Perks & Deadlines */}
-                    <div className="lg:col-span-5 space-y-8">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="bg-sumi/[0.02] border border-sumi/10 rounded-2xl p-8 space-y-6"
-                        >
-                            <h3 className="font-heading text-xl font-bold text-sumi flex items-center gap-2 border-b border-sumi/10 pb-4">
-                                <Award className="w-5 h-5 text-amber-500" />
-                                The Winner Will Receive
-                            </h3>
-
-                            <ul className="space-y-4 font-sans text-sm text-sumi/80">
-                                <li className="flex gap-3 items-start">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-sumi/5 flex items-center justify-center text-sumi">
-                                        <Gift className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <strong className="text-sumi block font-medium">Special Treat Box</strong>
-                                        A custom box from us filled to the brim with healthy, delicious goodies.
-                                    </div>
-                                </li>
-                                <li className="flex gap-3 items-start">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-sumi/5 flex items-center justify-center text-sumi">
-                                        <Globe className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <strong className="text-sumi block font-medium">Website Spotlight</strong>
-                                        Be featured proudly right here on our brand new website!
-                                    </div>
-                                </li>
-                                <li className="flex gap-3 items-start">
-                                    <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-sumi/5 flex items-center justify-center text-sumi">
-                                        <Instagram className="w-4 h-4" />
-                                    </div>
-                                    <div>
-                                        <strong className="text-sumi block font-medium">Social Media Feature</strong>
-                                        Be highlighted across all our social channels throughout the month.
-                                    </div>
-                                </li>
-                            </ul>
-                        </motion.div>
-
-                        {/* Timeline Badge */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.1 }}
-                            className="bg-sumi/5 border border-sumi/20 rounded-xl p-6 flex flex-col sm:flex-row justify-around items-center gap-4 text-center sm:text-left"
-                        >
-                            <div className="flex items-center gap-3">
-                                <Calendar className="w-6 h-6 text-sumi/70" />
-                                <div>
-                                    <p className="text-xs uppercase tracking-wider text-sumi/50">Entries Close</p>
-                                    <p className="font-heading font-bold text-sumi">June 6</p>
-                                </div>
+                    {/* Left Column: Remy's Photo Card */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="lg:col-span-5 relative"
+                    >
+                        <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-xl border border-sumi/10 bg-sumi/5">
+                            <Image
+                                src="/images/blog/remy-1.webp"
+                                alt="Remy - Pet of the Month June Winner"
+                                fill
+                                className="object-cover object-[center_25%]"
+                                priority
+                            />
+                            
+                            {/* Overlay Badge */}
+                            <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface/90 backdrop-blur-sm shadow-sm border border-sumi/10 text-[11px] font-bold uppercase tracking-wider text-sumi">
+                                <Award className="w-4 h-4 text-amber-500" />
+                                <span>Winner 🏆</span>
                             </div>
-                            <div className="h-px sm:h-8 w-full sm:w-px bg-sumi/15" />
-                            <div className="flex items-center gap-3">
-                                <Sparkles className="w-6 h-6 text-amber-500" />
-                                <div>
-                                    <p className="text-xs uppercase tracking-wider text-sumi/50">Winner Announced</p>
-                                    <p className="font-heading font-bold text-sumi">June 7 (Evening)</p>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
+                        </div>
+                    </motion.div>
 
-                    {/* Right Column: How to Enter */}
+                    {/* Right Column: Profile & Info */}
                     <div className="lg:col-span-7 space-y-6">
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
@@ -131,56 +87,92 @@ export default function PetOfTheMonth() {
                             transition={{ duration: 0.6 }}
                             className="space-y-6"
                         >
-                            <h3 className="font-heading text-2xl font-bold text-sumi">
-                                How to Enter
-                            </h3>
-
-                            <div className="space-y-4 font-sans text-sm text-sumi/80">
-                                {[
-                                    "Post your favorite photo or video of your pup.",
-                                    "Tag @2treatsdown in the post.",
-                                    "Share goofy, hilarious, or any cute moment of your pup.",
-                                    "Add a funny or cute caption for bonus entries.",
-                                    "Share to your story and tag us for extra entries.",
-                                    "Tag 3 friends in the comments on our Instagram post to spread the word 🐾"
-                                ].map((step, idx) => (
-                                    <div key={idx} className="flex gap-4 items-start bg-sumi/[0.01] hover:bg-sumi/[0.03] transition-colors p-3.5 border border-sumi/5 rounded-xl">
-                                        <div className="flex-shrink-0 w-6 h-6 rounded-full bg-sumi/5 border border-sumi/10 flex items-center justify-center font-bold text-xs text-sumi">
-                                            {idx + 1}
-                                        </div>
-                                        <p className="leading-relaxed">{step}</p>
-                                    </div>
-                                ))}
+                            <div className="border-b border-sumi/15 pb-4 space-y-2">
+                                <h3 className="font-heading text-2xl font-bold text-sumi">
+                                    Remy's Profile
+                                </h3>
+                                <p className="text-xs text-sumi/50 uppercase tracking-wider">Japanese Spitz • 4 Years Old</p>
                             </div>
 
-                            <div className="bg-amber-500/5 border border-amber-500/10 rounded-xl p-4 text-xs flex gap-3 text-sumi/80">
-                                <Heart className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
-                                <div>
-                                    <span className="font-semibold text-sumi">No Limit on Entries!</span> The more you share and tag us, the more chances your pup has to win! We can’t wait to see all your adorable pups 🐾☺️💛
-                                </div>
-                            </div>
+                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-sm text-sumi/80">
+                                <li className="space-y-1">
+                                    <span className="text-xs uppercase tracking-wider text-sumi/40 block">Favorite Activity</span>
+                                    <span className="font-medium text-sumi">Going to markets, pet shops, and parks</span>
+                                </li>
+                                <li className="space-y-1">
+                                    <span className="text-xs uppercase tracking-wider text-sumi/40 block">Favorite Treats</span>
+                                    <span className="font-medium text-sumi">2 Treats Down Chicken Jerky & stinky fish</span>
+                                </li>
+                                <li className="space-y-1 sm:col-span-2">
+                                    <span className="text-xs uppercase tracking-wider text-sumi/40 block">Funny Habit</span>
+                                    <span className="font-medium text-sumi leading-relaxed">Lying down in neighbors' driveways to beg for greetings from his friends 💛</span>
+                                </li>
+                            </ul>
 
-                            {/* CTA button */}
-                            <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center">
-                                <a
-                                    href="https://www.instagram.com/p/DY27QYtunFR/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="w-full sm:w-auto group relative inline-flex items-center justify-center font-sans text-[12px] tracking-[0.16em] uppercase text-washi bg-sumi border border-sumi px-10 py-5 transition-[color,background-color] duration-500 ease-text-roll hover:text-sumi hover:bg-transparent rounded-[4px]"
+                            <blockquote className="border-l-2 border-sumi/30 pl-4 py-1 italic font-display text-sm md:text-base text-sumi/70 leading-relaxed bg-sumi/[0.01]">
+                                "I'm so glad Remy came into my life. He is cute, he is funny, and he is the reason I am inspired to take photos. He's also helped me make so many wonderful friends in our neighborhood."
+                            </blockquote>
+
+                            {/* Action Buttons */}
+                            <div className="pt-4 flex flex-wrap gap-4 items-center">
+                                <Link
+                                    href="/blog"
+                                    className="group relative inline-flex items-center justify-center font-sans text-[11px] tracking-[0.16em] uppercase text-washi bg-sumi border border-sumi px-8 py-4.5 transition-[color,background-color] duration-500 ease-text-roll hover:text-sumi hover:bg-transparent rounded-[4px]"
                                 >
                                     <span className="relative inline-flex items-center gap-2">
-                                        <Instagram className="w-4 h-4" />
-                                        <span>Enter on Instagram</span>
+                                        <span>Read Remy's Story</span>
+                                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                                     </span>
+                                </Link>
+
+                                <a
+                                    href="https://www.instagram.com/wiggle_reflection/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/60 hover:text-sumi border border-sumi/20 hover:border-sumi px-8 py-4.5 rounded-[4px] transition-all duration-300"
+                                >
+                                    <Instagram className="w-4 h-4 text-rose-500" />
+                                    <span>Follow @wiggle_reflection</span>
                                 </a>
-                                <p className="text-[11px] text-sumi/50 leading-relaxed max-w-xs text-center sm:text-left">
-                                    By entering, you allow us to repost and share your photos/videos on our socials & website.
-                                </p>
                             </div>
                         </motion.div>
                     </div>
 
                 </div>
+
+                {/* Stay Tuned Banner */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
+                    className="bg-sumi/5 border border-sumi/20 rounded-2xl p-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left"
+                >
+                    <div className="space-y-2">
+                        <div className="flex justify-center md:justify-start items-center gap-2 text-xs font-semibold uppercase tracking-wider text-sumi/70">
+                            <Calendar className="w-4 h-4 text-sumi/60" />
+                            <span>Contest Announcement</span>
+                        </div>
+                        <h4 className="font-heading text-xl font-bold text-sumi">
+                            Stay Tuned for July's Pet of the Month!
+                        </h4>
+                        <p className="font-sans text-sm text-sumi/70 max-w-2xl">
+                            Entries for July will open soon. Keep sharing your cute pup photos, tagging <span className="font-semibold text-sumi">@2treatsdown</span>, and showing goofy moments for your chance to be featured! 🐾
+                        </p>
+                    </div>
+                    <div className="flex-shrink-0">
+                        <a
+                            href="https://www.instagram.com/2treatsdown/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 bg-transparent hover:bg-sumi/5 text-sumi border border-sumi/25 px-6 py-3.5 rounded-[4px] font-sans text-xs tracking-wider uppercase transition-all duration-300"
+                        >
+                            <Instagram className="w-4 h-4" />
+                            <span>Follow us for July details</span>
+                        </a>
+                    </div>
+                </motion.div>
+
             </div>
         </section>
     );

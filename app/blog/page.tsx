@@ -148,7 +148,7 @@ Remy is also a professional model. He was trained to pose for the camera at just
 
 *"I'm so glad Remy came into my life. He is cute, he is funny, and he is the reason I am inspired to take photos. He's also helped me make so many wonderful friends in our neighborhood."*
 
-We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Keep sharing your cute pup photos and tagging @2treatsdown—your dog could be our next Pet of the Month!`,
+We are so happy to feature Remy on our new website and socials this month, and he will be receiving a special treat box filled with goodies from us! Stay tuned for July's Pet of the Month entries—keep sharing your cute pup photos and tagging @2treatsdown for a chance to be featured next! 🐾`,
         image: "/images/blog/remy-1.webp",
         imagePosition: "center 25%",
         tags: ["Pet of the Month", "Community", "Feature"],
@@ -157,6 +157,11 @@ We are so happy to feature Remy on our new website and socials this month, and h
             "/images/blog/remy-3.webp",
             "/images/blog/remy-4.webp"
         ],
+        cta: {
+            text: "Follow Remy on Instagram 📸",
+            href: "https://www.instagram.com/wiggle_reflection/",
+            external: true
+        },
     },
 ];
 
@@ -420,12 +425,23 @@ export default function Blog() {
 
                             {/* CTA */}
                             <div className="mt-14 pt-10 border-t border-brand-pink/30 flex justify-center">
-                                <Link
-                                    href="/custom-cake"
-                                    className="inline-block bg-brand-orange hover:bg-brand-orange/90 text-white font-heading text-lg md:text-xl px-10 py-4 rounded-full shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
-                                >
-                                    Order a Custom Birthday Cake Today
-                                </Link>
+                                {post.cta ? (
+                                    <a
+                                        href={post.cta.href}
+                                        target={post.cta.external ? "_blank" : undefined}
+                                        rel={post.cta.external ? "noopener noreferrer" : undefined}
+                                        className="inline-block bg-brand-orange hover:bg-brand-orange/90 text-white font-heading text-lg md:text-xl px-10 py-4 rounded-full shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+                                    >
+                                        {post.cta.text}
+                                    </a>
+                                ) : (
+                                    <Link
+                                        href="/custom-cake"
+                                        className="inline-block bg-brand-orange hover:bg-brand-orange/90 text-white font-heading text-lg md:text-xl px-10 py-4 rounded-full shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+                                    >
+                                        Order a Custom Birthday Cake Today
+                                    </Link>
+                                )}
                             </div>
 
                             {/* Prev / Next Navigation */}
