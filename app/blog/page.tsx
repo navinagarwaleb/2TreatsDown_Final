@@ -166,6 +166,49 @@ We are so happy to feature Remy on our new website and socials this month, and h
             external: true
         },
     },
+    {
+        id: 4,
+        slug: "rescue-spotlight-ceilidh-husky-mix",
+        title: "Rescue Spotlight: Meet Ceilidh, the Resilient Husky Mix in Kanata",
+        date: "June 20, 2026",
+        author: "Akshata",
+        readTime: "3 min read",
+        excerpt: "Ceilidh is a sweet, active 6-month-old Husky mix looking for her forever home in Ottawa. Learn about her story, her playful personality, and how you can support her.",
+        body: `We are incredibly proud to launch our new **Rescue Spotlight** feature! At 2 Treats Down, we believe every dog deserves a loving home and a healthy start. Each month, we will highlight one special local foster dog to help them find their perfect family.
+
+To kick off this initiative, we are introducing **Ceilidh**, a resilient and loving puppy currently in foster care in Kanata.
+
+### Ceilidh's Profile
+
+* **Age:** 6 months old (arrived in care December 2025)
+* **Breed:** Husky Mix
+* **Location:** Fostered locally in Kanata, ON (living with foster sibling Autumn)
+* **Status:** Available for adoption!
+
+### Her Story & Personality
+
+Ceilidh arrived at the rescue last winter with her mother, Nuqa, and her siblings. While the rest of her family has happily found their forever homes, Ceilidh is still waiting for her perfect match. 
+
+She is sweet, curious, and beautifully independent. An active and highly intelligent puppy, Ceilidh loves going on long walks, exploring the outdoors, playing with other dogs, and spending quality time with children. She thrives on adventure and learning new tricks, but she also loves nothing more than relaxing and cuddling up next to you after a busy day.
+
+### A Brave and Resilient Heart
+
+Shortly after entering rescue care, Ceilidh was diagnosed with a **grade four heart murmur**. While she occasionally experiences mild symptoms like panting, her vet team continues to monitor her closely, and it does not affect her energy levels, daily activities, or overall quality of life. She remains a happy, affectionate, and incredibly resilient young pup who is ready to offer a lifetime of love to the right family.
+
+### How You Can Help
+
+Even if you aren't currently looking to adopt, you can make a huge difference:
+1. **Spread the word**: Share Ceilidh's story with friends, family, or anyone looking to adopt a dog in Ottawa.
+2. **Apply to Adopt**: If you think you might be Ceilidh's perfect match, you can learn more and view her detailed adoption info.`,
+        image: "/images/blog/ceilidh.webp",
+        imagePosition: "center 35%",
+        tags: ["Rescue Spotlight", "Adoption", "Community"],
+        cta: {
+            text: "View Ceilidh's Adoption Post 🩵",
+            href: "https://www.facebook.com/share/p/1BC4QHTrdN/?mibextid=wwXIfr",
+            external: true
+        },
+    },
 ];
 
 /* ─────────────────── Markdown Renderer ─────────────────── */
