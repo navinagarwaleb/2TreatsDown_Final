@@ -7,6 +7,7 @@ import Catalogs from "@/components/home/Catalogs";
 import Gallery from "@/components/home/Gallery";
 import { CharacterReveal } from "@/components/ui/ScrollReveal";
 import PetOfTheMonth from "@/components/home/PetOfTheMonth";
+import AdoptionSpotlight from "@/components/home/AdoptionSpotlight";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,7 @@ export default async function Home() {
                     </section>
 
                     <PetOfTheMonth />
+                    <AdoptionSpotlight />
 
                     <Testimonials />
                 </div>
