@@ -159,6 +159,7 @@ We are so happy to feature Remy on our new website and socials this month, and h
             "/images/blog/remy-3.webp",
             "/images/blog/remy-4.webp"
         ],
+        galleryTitle: "More of Remy",
         cta: {
             text: "Follow Remy on Instagram 📸",
             href: "https://www.instagram.com/remy_spitz720/",
@@ -458,13 +459,15 @@ export default function Blog() {
                             {/* Additional Gallery Images */}
                             {post.images && post.images.length > 0 && (
                                 <div className="mt-12 pt-8 border-t border-brand-pink/20">
-                                    <h3 className="text-2xl font-bold font-heading text-brand-dark mb-6">More of Remy</h3>
+                                    <h3 className="text-2xl font-bold font-heading text-brand-dark mb-6">
+                                        {post.galleryTitle || "More Photos"}
+                                    </h3>
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                                         {post.images.map((imgUrl, i) => (
                                             <div key={i} className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-md group hover:shadow-lg transition-all duration-300">
                                                 <Image
                                                     src={imgUrl}
-                                                    alt={`Remy photo ${i + 2}`}
+                                                    alt={`${post.galleryTitle || "Gallery"} photo ${i + 2}`}
                                                     fill
                                                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                                                 />
