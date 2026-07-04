@@ -110,7 +110,7 @@ export default function PetOfTheMonth() {
                             </ul>
 
                             <blockquote className="border-l-2 border-sumi/30 pl-4 py-1 italic font-display text-sm md:text-base text-sumi/70 leading-relaxed bg-sumi/[0.01]">
-                                "Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂 He's brought so much joy and laughter into our home."
+                                "Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂"
                             </blockquote>
 
                             {/* Action Buttons */}

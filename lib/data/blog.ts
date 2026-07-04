@@ -237,7 +237,7 @@ To keep this monthly tradition going strong, we caught up with Nemo's family to 
 
 * **Age:** 1 (born June 23, 2025)
 * **Breed:** Husky-German Shepherd Mix
-* **Favourite Treats:** 2 Treats Down Cheese Nibbles or freeze-dried salmon (he's not picky when it comes to snacks!)
+* **Favourite Treats:** 2 Treats Down Cheese Nibbles or freeze-dried salmon (he's picky, but these are the winners!)
 * **Favorite Activities:** Laying on the lawn, playing with every single toy from his bin, and greeting all his neighbours
 
 ### His Goofy & Hilarious Habits
@@ -248,7 +248,7 @@ By day, his toy bin doesn't stand a chance. Nemo loves all toys equally and usua
 
 ### A Note from Nemo's Family
 
-*"Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂 He's brought so much joy and laughter into our home — we wouldn't trade his bedtime shenanigans for anything."*
+*"Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂"*
 
 We are thrilled to feature Nemo this July! He will be receiving a special treat box packed with his favourite 2 Treats Down goodies. Want to see YOUR pup featured next? Keep tagging @2treatsdown in your photos for a chance to be our August Pet of the Month! 🐾
 
