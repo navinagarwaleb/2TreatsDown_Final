@@ -124,6 +124,16 @@ export default function PetOfTheMonth() {
                                         <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                                     </span>
                                 </Link>
+
+                                <a
+                                    href="https://www.instagram.com/northernnemo"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/60 hover:text-sumi border border-sumi/20 hover:border-sumi px-8 py-4.5 rounded-[4px] transition-all duration-300"
+                                >
+                                    <Instagram className="w-4 h-4 text-rose-500" />
+                                    <span>Follow @northernnemo</span>
+                                </a>
                             </div>
                         </motion.div>
                     </div>
@@ -144,10 +154,10 @@ export default function PetOfTheMonth() {
                             <span>Contest Announcement</span>
                         </div>
                         <h4 className="font-heading text-xl font-bold text-sumi">
-                            Want Your Pup Featured Next?
+                            Entries Open Last Week of July
                         </h4>
                         <p className="font-sans text-sm text-sumi/70 max-w-2xl">
-                            Entries for August are open! Keep sharing your cute pup photos, tagging <span className="font-semibold text-sumi">@2treatsdown</span>, and showing off their goofy moments for a chance to be our next Pet of the Month! 🐾
+                            Entries for the August Pet of the Month will open during the last week of July. Stay tuned and keep sharing your pup's cutest moments, tagging <span className="font-semibold text-sumi">@2treatsdown</span> for a chance to be featured next! 🐾
                         </p>
                     </div>
                     <div className="flex-shrink-0">

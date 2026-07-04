@@ -254,6 +254,7 @@ We are thrilled to feature Nemo this July! He will be receiving a special treat 
 
 *Photo Credit: Special thanks to Nemo's family for sharing these adorable snapshots of their boy! 📸*`,
         image: "/images/blog/nemo-1.jpg",
+        imagePosition: "center 35%",
         tags: ["Pet of the Month", "Community", "Feature"],
         images: [
             "/images/blog/nemo-2.jpg",
@@ -263,5 +264,10 @@ We are thrilled to feature Nemo this July! He will be receiving a special treat 
             "/images/blog/nemo-6.jpg",
         ],
         galleryTitle: "More of Nemo",
+        cta: {
+            text: "Follow Nemo on Instagram 📸",
+            href: "https://www.instagram.com/northernnemo?igsh=MWl2ZDU2NzdjNDFiOA==",
+            external: true
+        },
     },
 ];
