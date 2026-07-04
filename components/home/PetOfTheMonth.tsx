@@ -26,7 +26,7 @@ export default function PetOfTheMonth() {
                         className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sumi/5 border border-sumi/10 text-xs font-semibold uppercase tracking-wider text-sumi/70"
                     >
                         <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
-                        <span>June Pet of the Month</span>
+                        <span>July Pet of the Month</span>
                     </motion.div>
 
                     <motion.h2
@@ -36,7 +36,7 @@ export default function PetOfTheMonth() {
                         transition={{ duration: 0.6, delay: 0.1 }}
                         className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-sumi tracking-tight"
                     >
-                        Meet Our June Winner: Remy!
+                        Meet Our July Winner: Nemo!
                     </motion.h2>
 
                     <motion.p
@@ -46,14 +46,14 @@ export default function PetOfTheMonth() {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-base md:text-lg text-sumi/70 font-display leading-relaxed"
                     >
-                        We are so excited to celebrate our very first Pet of the Month. Say hello to Remy, the photogenic Japanese Spitz! 🐾💛
+                        We are so excited to celebrate our July Pet of the Month. Say hello to Nemo, the Husky-German Shepherd with a heart of gold and a bedtime negotiation strategy! 🐾💛
                     </motion.p>
                 </div>
 
                 {/* Main Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-16">
                     
-                    {/* Left Column: Remy's Photo Card */}
+                    {/* Left Column: Nemo's Photo Card */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
@@ -63,8 +63,8 @@ export default function PetOfTheMonth() {
                     >
                         <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden shadow-xl border border-sumi/10 bg-sumi/5">
                             <Image
-                                src="/images/blog/remy-1.webp"
-                                alt="Remy - Pet of the Month June Winner"
+                                src="/images/blog/nemo-1.jpg"
+                                alt="Nemo - Pet of the Month July Winner"
                                 fill
                                 className="object-cover object-[center_25%]"
                                 priority
@@ -89,51 +89,41 @@ export default function PetOfTheMonth() {
                         >
                             <div className="border-b border-sumi/15 pb-4 space-y-2">
                                 <h3 className="font-heading text-2xl font-bold text-sumi">
-                                    Remy's Profile
+                                    Nemo's Profile
                                 </h3>
-                                <p className="text-xs text-sumi/50 uppercase tracking-wider">Japanese Spitz • 4 Years Old</p>
+                                <p className="text-xs text-sumi/50 uppercase tracking-wider">Husky-German Shepherd Mix • 1 Year Old</p>
                             </div>
 
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-sans text-sm text-sumi/80">
                                 <li className="space-y-1">
                                     <span className="text-xs uppercase tracking-wider text-sumi/40 block">Favorite Activity</span>
-                                    <span className="font-medium text-sumi">Going to markets, pet shops, and parks</span>
+                                    <span className="font-medium text-sumi">Laying on the lawn, playing with every toy from his bin</span>
                                 </li>
                                 <li className="space-y-1">
                                     <span className="text-xs uppercase tracking-wider text-sumi/40 block">Favorite Treats</span>
-                                    <span className="font-medium text-sumi">2 Treats Down Chicken Jerky & stinky fish</span>
+                                    <span className="font-medium text-sumi">2 Treats Down Cheese Nibbles & freeze-dried salmon</span>
                                 </li>
                                 <li className="space-y-1 sm:col-span-2">
                                     <span className="text-xs uppercase tracking-wider text-sumi/40 block">Funny Habit</span>
-                                    <span className="font-medium text-sumi leading-relaxed">Lying down in neighbors' driveways to beg for greetings from his friends 💛</span>
+                                    <span className="font-medium text-sumi leading-relaxed">Operation Stay Up: launching a full snuggle campaign to avoid bedtime every single night 💛</span>
                                 </li>
                             </ul>
 
                             <blockquote className="border-l-2 border-sumi/30 pl-4 py-1 italic font-display text-sm md:text-base text-sumi/70 leading-relaxed bg-sumi/[0.01]">
-                                "I'm so glad Remy came into my life. He is cute, he is funny, and he is the reason I am inspired to take photos. He's also helped me make so many wonderful friends in our neighborhood."
+                                "Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂 He's brought so much joy and laughter into our home."
                             </blockquote>
 
                             {/* Action Buttons */}
                             <div className="pt-4 flex flex-wrap gap-4 items-center">
                                 <Link
-                                    href="/blog?post=june-pet-of-the-month-remy"
+                                    href="/blog?post=july-pet-of-the-month-nemo"
                                     className="group relative inline-flex items-center justify-center font-sans text-[11px] tracking-[0.16em] uppercase text-washi bg-sumi border border-sumi px-8 py-4.5 transition-[color,background-color] duration-500 ease-text-roll hover:text-sumi hover:bg-transparent rounded-[4px]"
                                 >
                                     <span className="relative inline-flex items-center gap-2">
-                                        <span>Read Remy's Story</span>
+                                        <span>Read Nemo's Story</span>
                                         <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                                     </span>
                                 </Link>
-
-                                <a
-                                    href="https://www.instagram.com/remy_spitz720/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 font-sans text-[11px] tracking-[0.16em] uppercase text-sumi/60 hover:text-sumi border border-sumi/20 hover:border-sumi px-8 py-4.5 rounded-[4px] transition-all duration-300"
-                                >
-                                    <Instagram className="w-4 h-4 text-rose-500" />
-                                    <span>Follow @remy_spitz720</span>
-                                </a>
                             </div>
                         </motion.div>
                     </div>
@@ -154,10 +144,10 @@ export default function PetOfTheMonth() {
                             <span>Contest Announcement</span>
                         </div>
                         <h4 className="font-heading text-xl font-bold text-sumi">
-                            Stay Tuned for July's Pet of the Month!
+                            Want Your Pup Featured Next?
                         </h4>
                         <p className="font-sans text-sm text-sumi/70 max-w-2xl">
-                            Entries for July will open soon. Keep sharing your cute pup photos, tagging <span className="font-semibold text-sumi">@2treatsdown</span>, and showing goofy moments for your chance to be featured! 🐾
+                            Entries for August are open! Keep sharing your cute pup photos, tagging <span className="font-semibold text-sumi">@2treatsdown</span>, and showing off their goofy moments for a chance to be our next Pet of the Month! 🐾
                         </p>
                     </div>
                     <div className="flex-shrink-0">
@@ -168,7 +158,7 @@ export default function PetOfTheMonth() {
                             className="inline-flex items-center gap-2 bg-transparent hover:bg-sumi/5 text-sumi border border-sumi/25 px-6 py-3.5 rounded-[4px] font-sans text-xs tracking-wider uppercase transition-all duration-300"
                         >
                             <Instagram className="w-4 h-4" />
-                            <span>Follow us for July details</span>
+                            <span>Tag us for August entries</span>
                         </a>
                     </div>
                 </motion.div>
