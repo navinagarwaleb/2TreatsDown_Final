@@ -229,30 +229,21 @@ Even if you aren't currently looking to adopt, you can make a huge difference:
         readTime: "2 min read",
         excerpt:
             "Meet Nemo, a goofy, lovable 1-year-old Husky-German Shepherd mix and our July Pet of the Month! Read about his Operation Stay Up, toy tornadoes, and treat-loving heart.",
-        body: `Meet Nemo, our July **Pet of the Month**! Nemo is a handsome Husky-German Shepherd mix who won us over with his expressive face, endless energy, and his very own bedtime loophole operation.
+        body: `### His Goofy & Hilarious Habits
 
-To keep this monthly tradition going strong, we caught up with Nemo's family to learn about the puppy who treats every person like a potential best friend.
+Every night, right on cue, Nemo launches Operation Stay Up. The routine is always the same: the moment he hears "time for bed," he bolts off to find the other parent, climbs on top of them, and snuggles as sweetly as possible in hopes everyone will forget he has a bedtime. We'd say it's a pretty smart negotiation tactic! 😄
 
-### Nemo's Profile
+By day, Nemo's toy bin doesn't stand a chance. He loves all of his toys and usually pulls every single one out by the end of the day. His favourite game is finding the tiniest toy and begging someone to play tug with him.
 
-* **Age:** 1 (born June 23, 2025)
-* **Breed:** Husky-German Shepherd Mix
-* **Favourite Treats:** 2 Treats Down Cheese Nibbles or freeze-dried salmon (he's picky, but these are the winners!)
-* **Favorite Activities:** Laying on the lawn, playing with every single toy from his bin, and greeting all his neighbours
-
-### His Goofy & Hilarious Habits
-
-Every night, right on cue, Nemo launches **Operation Stay Up**. The routine is flawless: the moment he hears "time for bed," he bolts off to find the other parent, climbs on top of them, and snuggles as sweetly as possible in hopes everyone will forget he has a bedtime. It's a masterclass in canine negotiation.
-
-By day, his toy bin doesn't stand a chance. Nemo loves all toys equally and usually pulls every single one out by the end of the day. His specialty? Finding the tiniest toy and using it to beg for a game of tug. Resistance is futile.
+When he's not playing with his toys, Nemo loves relaxing on the lawn and saying hello to all of his neighbours. After all, he believes every person he meets is a potential best friend.
 
 ### A Note from Nemo's Family
 
-*"Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: please rub my belly and give me treats. 😂"*
+"Nemo thinks every person he meets is a potential best friend. If he could say one thing to everyone, it would be: "Please rub my belly and give me treats."" 😂
 
-We are thrilled to feature Nemo this July! He will be receiving a special treat box packed with his favourite 2 Treats Down goodies. Want to see YOUR pup featured next? Keep tagging @2treatsdown in your photos for a chance to be our August Pet of the Month! 🐾
+We're so excited to feature Nemo as our July Pet of the Month! He'll be receiving a special treat box from us to celebrate, and we can't wait to see him enjoy his goodies.
 
-*Photo Credit: Special thanks to Nemo's family for sharing these adorable snapshots of their boy! 📸*`,
+Think your pup would make a great Pet of the Month? We'd love to meet them! Keep tagging @2treatsdown in your photos, reels, and stories, and mention "Pet of the Month" when you enter for a chance to be featured next month. 🐾`,
         image: "/images/blog/nemo-1.jpg",
         imagePosition: "center 35%",
         tags: ["Pet of the Month", "Community", "Feature"],
