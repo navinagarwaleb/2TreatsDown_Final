@@ -229,7 +229,18 @@ Even if you aren't currently looking to adopt, you can make a huge difference:
         readTime: "2 min read",
         excerpt:
             "Meet Nemo, a goofy, lovable 1-year-old Husky-German Shepherd mix and our July Pet of the Month! Read about his Operation Stay Up, toy tornadoes, and treat-loving heart.",
-        body: `### His Goofy & Hilarious Habits
+        body: `Meet Nemo, our July **Pet of the Month**! Nemo is a handsome Husky-German Shepherd mix who won us over with his expressive face, endless energy, and his very own bedtime loophole operation.
+
+To keep this monthly tradition going strong, we caught up with Nemo's family to learn about the puppy who treats every person like a potential best friend.
+
+### Nemo's Profile
+
+* **Age:** 1 (born June 23, 2025)
+* **Breed:** Husky-German Shepherd Mix
+* **Favourite Treats:** 2 Treats Down Cheese Nibbles or freeze-dried salmon
+* **Favorite Activities:** Laying on the lawn, playing with every single toy from his bin, and greeting all his neighbours
+
+### His Goofy & Hilarious Habits
 
 Every night, right on cue, Nemo launches Operation Stay Up. The routine is always the same: the moment he hears "time for bed," he bolts off to find the other parent, climbs on top of them, and snuggles as sweetly as possible in hopes everyone will forget he has a bedtime. We'd say it's a pretty smart negotiation tactic! 😄
 
@@ -243,7 +254,9 @@ When he's not playing with his toys, Nemo loves relaxing on the lawn and saying 
 
 We're so excited to feature Nemo as our July Pet of the Month! He'll be receiving a special treat box from us to celebrate, and we can't wait to see him enjoy his goodies.
 
-Think your pup would make a great Pet of the Month? We'd love to meet them! Keep tagging @2treatsdown in your photos, reels, and stories, and mention "Pet of the Month" when you enter for a chance to be featured next month. 🐾`,
+Think your pup would make a great Pet of the Month? We'd love to meet them! Keep tagging @2treatsdown in your photos, reels, and stories, and mention "Pet of the Month" when you enter for a chance to be featured next month. 🐾
+
+*Photo Credit: Special thanks to Nemo's family for sharing these adorable snapshots of their boy! 📸*`,
         image: "/images/blog/nemo-1.jpg",
         imagePosition: "center 35%",
         tags: ["Pet of the Month", "Community", "Feature"],
