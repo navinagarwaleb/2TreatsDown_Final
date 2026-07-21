@@ -7,7 +7,7 @@ import { SquareProduct } from "@/lib/square";
 import { Minus, Plus } from "lucide-react";
 
 export default function ProductCard(product: SquareProduct) {
-    const { id, title, price, description, imageUrl, variations } = product;
+    const { id, title, price, description, imageUrl, variations, customOrderUrl } = product;
     const { items, addItem, removeItem, updateQuantity } = useCartStore();
     const [isMounted, setIsMounted] = useState(false);
 
@@ -76,7 +76,14 @@ export default function ProductCard(product: SquareProduct) {
 
                 {/* Actions container at the bottom */}
                 <div className="mt-auto pt-4 flex flex-col gap-3">
-                    {hasVariations ? (
+                    {customOrderUrl ? (
+                        <a
+                            href={customOrderUrl}
+                            className="w-full bg-brand-pink hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 py-2.5 px-4 rounded-xl text-sm font-bold shadow-lg flex items-center justify-center gap-2 text-center"
+                        >
+                            Customize This &rarr;
+                        </a>
+                    ) : hasVariations ? (
                         <Link
                             href={`/shop/item/${id}`}
                             className="w-full bg-brand-pink hover:bg-brand-brown text-brand-dark hover:text-white transition-colors duration-300 py-2.5 px-4 rounded-xl text-sm font-bold shadow-lg flex items-center justify-center gap-2 text-center"

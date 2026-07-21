@@ -16,6 +16,7 @@ export interface SquareProduct {
     imageUrls: string[];
     prepTimeDays: number;
     variations: SquareVariation[];
+    customOrderUrl?: string;
 }
 
 export async function getSquareProducts(): Promise<SquareProduct[]> {
@@ -218,6 +219,21 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     }
                 }
 
+                // Extract custom order redirect URL from custom attributes
+                let customOrderUrl: string | undefined = undefined;
+                if (item.custom_attribute_values) {
+                    const attrValues = Object.values(item.custom_attribute_values) as any[];
+                    const customOrderAttr = attrValues.find((attr: any) => {
+                        const attrName = attr.name?.toLowerCase() || "";
+                        const attrKey = attr.key?.toLowerCase() || "";
+                        return attrKey.includes("custom_order") || attrKey.includes("custom order") ||
+                               attrName.includes("custom_order") || attrName.includes("custom order");
+                    });
+                    if (customOrderAttr) {
+                        customOrderUrl = customOrderAttr.string_value || customOrderAttr.text_value || undefined;
+                    }
+                }
+
                 return {
                     id: item.id,
                     title: data.name || "Unknown Item",
@@ -228,7 +244,8 @@ export async function getSquareProducts(): Promise<SquareProduct[]> {
                     imageUrl,
                     imageUrls,
                     prepTimeDays,
-                    variations
+                    variations,
+                    customOrderUrl,
                 };
             });
 
