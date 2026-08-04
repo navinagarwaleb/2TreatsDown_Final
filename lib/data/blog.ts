@@ -311,7 +311,7 @@ She wants to be everyone's friend.
 
 Congratulations, Duck, on being our August Pet of the Month! We hope your month is filled with lots of cheese, fun trips to the dog park, exciting car rides, and plenty of new friends. 🐾`,
         image: "/images/blog/duck-4.webp",
-        imagePosition: "center 35%",
+        imagePosition: "center 55%",
         tags: ["Pet of the Month", "Community", "Feature"],
         images: [
             "/images/blog/duck-1.webp",

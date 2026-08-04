@@ -66,7 +66,7 @@ export default function PetOfTheMonth() {
                                 src="/images/blog/duck-4.webp"
                                 alt="Duck - Pet of the Month August Winner"
                                 fill
-                                className="object-cover object-[center_25%]"
+                                className="object-cover object-[center_55%]"
                                 priority
                             />
                             
