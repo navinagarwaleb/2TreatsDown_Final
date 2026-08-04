@@ -274,4 +274,53 @@ Think your pup would make a great Pet of the Month? We'd love to meet them! Keep
             external: true
         },
     },
+    {
+        id: 6,
+        slug: "august-pet-of-the-month-duck",
+        title: "Introducing Our August Pet of the Month: Duck! 🦆🐾",
+        date: "August 4, 2026",
+        author: "Akshata",
+        readTime: "2 min read",
+        excerpt:
+            "Meet Duck, our adorable 4-year-old Boston Terrier and our August Pet of the Month! Duck has a sweet personality, loves making new friends, and is always ready for her next adventure.",
+        body: `Meet Duck, our August **Pet of the Month**! Duck is an adorable 4-year-old Boston Terrier who won us over with her sweet personality, love for making new friends, and readiness for adventure.
+
+To keep this monthly tradition going strong, we caught up with Duck's family to learn all about this charming pup.
+
+### Duck's Profile
+
+* **Breed:** Boston Terrier
+* **Age:** 4 years old (Birthday: November 17, 2021)
+* **Favourite Treat:** Cheeeeese!
+* **Favourite Toy:** Her BarkBox Jamster—or more specifically, the Hugh Hefner hamster part! She likes the robe too, but her absolute favourite is the Hugh Hefner part.
+* **Favourite Activity:** Visiting any dog park.
+
+### A Little More About Duck
+
+One of Duck's favourite things is going for car rides. She gets excited anytime she thinks she's about to go for a ride—even if it's a completely unknown car! As soon as she realizes a car ride might be happening, she gets extra pep in her step and wants to hurry up and get in the car.
+
+Duck also has a wonderful personality. She wants to be everyone's friend, whether she's meeting someone for the first time or visiting one of her favourite dog parks.
+
+### One Thing Everyone Should Know About Duck
+
+She wants to be everyone's friend.
+
+### If Duck Could Say One Thing…
+
+"Hello, be my friend!" ❤️
+
+Congratulations, Duck, on being our August Pet of the Month! We hope your month is filled with lots of cheese, fun trips to the dog park, exciting car rides, and plenty of new friends. 🐾`,
+        image: "/images/blog/duck-4.webp",
+        imagePosition: "center 35%",
+        tags: ["Pet of the Month", "Community", "Feature"],
+        images: [
+            "/images/blog/duck-1.webp",
+            "/images/blog/duck-2.webp",
+            "/images/blog/duck-3.webp",
+            "/images/blog/duck-5.webp",
+            "/images/blog/duck-6.webp",
+            "/images/blog/duck-7.webp",
+        ],
+        galleryTitle: "More of Duck",
+    },
 ];
