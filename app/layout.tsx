@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CartDrawer from "@/components/shop/CartDrawer";
 import EntranceLoader from "@/components/layout/EntranceLoader";
+import TemporaryClosurePopup from "@/components/layout/TemporaryClosurePopup";
 
 const cormorant = Cormorant_Garamond({
     subsets: ["latin"],
@@ -58,6 +59,7 @@ export default function RootLayout({
                 className={`${sans.variable} ${cormorant.variable} font-sans min-h-screen flex flex-col bg-surface text-sumi antialiased transition-colors overflow-x-hidden`}
             >
                 <EntranceLoader />
+                <TemporaryClosurePopup />
                 <Navbar />
                 <CartDrawer />
                 <main className="flex-grow flex flex-col">{children}</main>
