@@ -20,19 +20,6 @@ export default function CustomCakePage() {
                         Whether it's a first birthday, a gotcha day, or a Tuesday worth celebrating, our custom cakes are made entirely from scratch using safe, healthy ingredients.
                     </p>
 
-                    <div className="mt-8 p-6 bg-clay-rose/10 border-l-4 border-clay-rose rounded-2xl">
-                        <h4 className="font-bold text-clay-rose mb-2">🐾 Custom Cake Bookings — Currently Unavailable</h4>
-                        <p className="text-sm text-sumi/80 leading-relaxed">
-                            Our October &amp; November custom order bookings are now closed, and we are not accepting any new orders for them. December bookings and future dates are currently unavailable for booking.
-                        </p>
-                        <p className="text-sm text-sumi/80 leading-relaxed mt-2">
-                            We&rsquo;ll share any updates regarding future availability right here on our website and Instagram, so stay tuned! ❤️
-                        </p>
-                        <p className="text-xs text-sumi/60 italic mt-3">
-                            Thank you so much for your continued love and support! — 2 Treats Down 🐾
-                        </p>
-                    </div>
-
                     <div className="mt-8 p-6 bg-brand-pink/30 rounded-2xl border border-brand-pink">
                         <h4 className="font-bold text-brand-dark mb-2">Pickup:</h4>
                         <p className="text-sm opacity-90 text-brand-dark/80">
