@@ -4,8 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Heart } from "lucide-react";
 
-const STORAGE_KEY = "2td-closure-notice-dismissed";
-const CLOSURE_END = new Date("2026-08-27T00:00:00");
+const STORAGE_KEY = "2td-booking-update-dismissed";
 
 export default function TemporaryClosurePopup() {
     const [isVisible, setIsVisible] = useState(false);
@@ -21,12 +20,6 @@ export default function TemporaryClosurePopup() {
     }, []);
 
     useEffect(() => {
-        // Date check: don't show at all after August 27
-        if (Date.now() >= CLOSURE_END.getTime()) {
-            setShouldRender(false);
-            return;
-        }
-
         // Session check: already dismissed this browsing session
         try {
             const dismissed = sessionStorage.getItem(STORAGE_KEY);
@@ -72,7 +65,7 @@ export default function TemporaryClosurePopup() {
                     transition={{ duration: 0.3 }}
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Temporary closure notice"
+                    aria-label="Booking update notice"
                 >
                     {/* Backdrop */}
                     <motion.div
@@ -110,26 +103,21 @@ export default function TemporaryClosurePopup() {
 
                         {/* Heading */}
                         <h2 className="font-heading text-2xl sm:text-3xl text-sumi mb-3">
-                            A Little Break 🐾
+                            A Little Booking Update 🐾
                         </h2>
 
                         {/* Message */}
-                        <p className="font-sans text-base sm:text-lg text-sumi/70 leading-relaxed mb-3">
-                            We&rsquo;ll be closed for pickups from{" "}
-                            <strong className="text-clay-rose font-semibold">
-                                August 22&ndash;26
-                            </strong>
-                            .
+                        <p className="font-sans text-base sm:text-lg text-sumi/70 leading-relaxed mb-3 text-left">
+                            Our October &amp; November custom order bookings are now closed, and we are not accepting any new orders for them.
                         </p>
-                        <p className="font-sans text-base sm:text-lg text-sumi/70 leading-relaxed mb-6">
-                            Pickups will resume on{" "}
-                            <strong className="text-clay-rose font-semibold">
-                                August 27
-                            </strong>
-                            .
+                        <p className="font-sans text-base sm:text-lg text-sumi/70 leading-relaxed mb-3 text-left">
+                            December bookings and future dates are currently unavailable for booking.
                         </p>
-                        <p className="font-sans text-sm sm:text-base text-sumi/50 italic mb-8 leading-relaxed">
-                            Thank you for your understanding and for supporting 2 Treats Down! 💛
+                        <p className="font-sans text-base sm:text-lg text-sumi/70 leading-relaxed mb-3 text-left">
+                            We&rsquo;ll share any updates regarding future availability right here on our website and Instagram, so stay tuned! ❤️
+                        </p>
+                        <p className="font-sans text-sm sm:text-base text-sumi/50 italic mb-8 leading-relaxed text-left">
+                            Thank you so much for your continued love and support!
                         </p>
 
                         {/* Got it Button */}
